@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.4-0.9998 (TeX Live 2012) (format=xelatex 2012.6.30)  25 APR 2013 14:01
+This is XeTeX, Version 3.1415926-2.4-0.9998 (TeX Live 2012) (format=xelatex 2012.6.30)  27 JUN 2013 13:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -324,7 +324,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--47
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
 
  []
 
@@ -334,13 +334,36 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 )
 [1
 
-] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 58--59
+]
+Underfull \hbox (badness 10000) in paragraph at lines 51--53
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--63
+Underfull \hbox (badness 10000) in paragraph at lines 54--56
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 61--63
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--66
+
+ []
+
+
+Package natbib Warning: Citation `Haas:jq' on page 3 undefined on input line 68
+.
+
+
+Package natbib Warning: Citation `Grabherr:2011jb' on page 3 undefined on input
+ line 68.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--69
 
  []
 
@@ -349,22 +372,24 @@ File: Figure1.eps Graphic file (type eps)
  <Figure1.eps> [5]
 File: Figure2.eps Graphic file (type eps)
  <Figure2.eps> [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 90.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 90.
 
-(./trimming.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 90.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 90.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 90.
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
+[7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
+ (./trimming.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 96.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 96.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
  ) 
 Here is how much of TeX's memory you used:
- 6960 strings out of 494004
- 96625 string characters out of 3150890
+ 6962 strings out of 494004
+ 96651 string characters out of 3150890
  172244 words of memory out of 3000000
- 10172 multiletter control sequences out of 15000+200000
+ 10174 multiletter control sequences out of 15000+200000
  9238 words of font info for 35 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 30i,5n,25p,1550b,456s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,5n,25p,1550b,452s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on trimming.pdf (7 pages).
