@@ -1,0 +1,317 @@
+\begin{thebibliography}{20}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Bradnam et~al.(2013)Bradnam, Fass, Alexandrov, Baranay, Bechner,
+  Boisvert10, Chapman, Chapuis, Chikhi, Chitsaz, Chou, Corbeil, Del~Fabbro,
+  Docking, Durbin, Earl, Emrich, Fedotov, Fonseca, Ganapathy, Gibbs, Gnerre,
+  Godzaridis, Goldstein, Haimel, Hall, Haussler, Hiatt, Ho, Howard, Hunt,
+  Jackman, Jaffe, Jarvis, Jiang, Kazakov, Kersey, Kitzman, Knight, Koren, Lam,
+  Lavenier, Laviolette, Li, Li, Liu, Liu, Luo, MacCallum, MacManes, Maillet,
+  Melnikov, Vieira, Naquin, Ning, Otto, Paten, Paulo, Phillippy, Pina-Martins,
+  Place, Przybylski, Qin, Qu, Ribeiro, Richards, Rokhsar, Ruby, Scalabrin,
+  Schatz, Schwartz, Sergushichev, Sharpe, Shaw, Shendure, Shi, Simpson, Song,
+  Tsarev, Vezzi, Vicedomini, Wang, Worley, Yin, Yiu, Yuan, Zhang, Zhang, Zhou
+  and Korf}]{Bradnam:2013uu}
+\bibinfo{author}{Bradnam, K.R.}, \bibinfo{author}{Fass, J.N.},
+  \bibinfo{author}{Alexandrov, A.}, \bibinfo{author}{Baranay, P.},
+  \bibinfo{author}{Bechner, M.}, \bibinfo{author}{Boisvert10, S.},
+  \bibinfo{author}{Chapman, J.A.}, \bibinfo{author}{Chapuis, G.},
+  \bibinfo{author}{Chikhi, R.}, \bibinfo{author}{Chitsaz, H.},
+  \bibinfo{author}{Chou, W.C.}, \bibinfo{author}{Corbeil, J.},
+  \bibinfo{author}{Del~Fabbro, C.}, \bibinfo{author}{Docking, T.R.},
+  \bibinfo{author}{Durbin, R.}, \bibinfo{author}{Earl, D.},
+  \bibinfo{author}{Emrich, S.}, \bibinfo{author}{Fedotov, P.},
+  \bibinfo{author}{Fonseca, N.A.}, \bibinfo{author}{Ganapathy, G.},
+  \bibinfo{author}{Gibbs, R.A.}, \bibinfo{author}{Gnerre, S.},
+  \bibinfo{author}{Godzaridis, {\'E}.}, \bibinfo{author}{Goldstein, S.},
+  \bibinfo{author}{Haimel, M.}, \bibinfo{author}{Hall, G.},
+  \bibinfo{author}{Haussler, D.}, \bibinfo{author}{Hiatt, J.B.},
+  \bibinfo{author}{Ho, I.Y.}, \bibinfo{author}{Howard, J.},
+  \bibinfo{author}{Hunt, M.}, \bibinfo{author}{Jackman, S.D.},
+  \bibinfo{author}{Jaffe, D.B.}, \bibinfo{author}{Jarvis, E.},
+  \bibinfo{author}{Jiang, H.}, \bibinfo{author}{Kazakov, S.},
+  \bibinfo{author}{Kersey, P.J.}, \bibinfo{author}{Kitzman, J.O.},
+  \bibinfo{author}{Knight, J.R.}, \bibinfo{author}{Koren, S.},
+  \bibinfo{author}{Lam, T.W.}, \bibinfo{author}{Lavenier, D.},
+  \bibinfo{author}{Laviolette, F.}, \bibinfo{author}{Li, Y.},
+  \bibinfo{author}{Li, Z.}, \bibinfo{author}{Liu, B.}, \bibinfo{author}{Liu,
+  Y.}, \bibinfo{author}{Luo, R.}, \bibinfo{author}{MacCallum, I.},
+  \bibinfo{author}{MacManes, M.D.}, \bibinfo{author}{Maillet, N.},
+  \bibinfo{author}{Melnikov, S.}, \bibinfo{author}{Vieira, B.M.},
+  \bibinfo{author}{Naquin, D.}, \bibinfo{author}{Ning, Z.},
+  \bibinfo{author}{Otto, T.D.}, \bibinfo{author}{Paten, B.},
+  \bibinfo{author}{Paulo, O.S.}, \bibinfo{author}{Phillippy, A.M.},
+  \bibinfo{author}{Pina-Martins, F.}, \bibinfo{author}{Place, M.},
+  \bibinfo{author}{Przybylski, D.}, \bibinfo{author}{Qin, X.},
+  \bibinfo{author}{Qu, C.}, \bibinfo{author}{Ribeiro, F.J.},
+  \bibinfo{author}{Richards, S.}, \bibinfo{author}{Rokhsar, D.S.},
+  \bibinfo{author}{Ruby, J.G.}, \bibinfo{author}{Scalabrin, S.},
+  \bibinfo{author}{Schatz, M.C.}, \bibinfo{author}{Schwartz, D.C.},
+  \bibinfo{author}{Sergushichev, A.}, \bibinfo{author}{Sharpe, T.},
+  \bibinfo{author}{Shaw, T.I.}, \bibinfo{author}{Shendure, J.},
+  \bibinfo{author}{Shi, Y.}, \bibinfo{author}{Simpson, J.T.},
+  \bibinfo{author}{Song, H.}, \bibinfo{author}{Tsarev, F.},
+  \bibinfo{author}{Vezzi, F.}, \bibinfo{author}{Vicedomini, R.},
+  \bibinfo{author}{Wang, J.}, \bibinfo{author}{Worley, K.C.},
+  \bibinfo{author}{Yin, S.}, \bibinfo{author}{Yiu, S.M.},
+  \bibinfo{author}{Yuan, J.}, \bibinfo{author}{Zhang, G.},
+  \bibinfo{author}{Zhang, H.}, \bibinfo{author}{Zhou, S.},
+  \bibinfo{author}{Korf, I.F.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{Assemblathon 2: evaluating \textit{de novo} methods
+  of genome assembly in three vertebrate species}}.
+\newblock \bibinfo{journal}{arXiv.org}
+  \href{http://arxiv.org/abs/1301.5406v1}{\tt arXiv:1301.5406v1}.
+%Type = Article
+\bibitem[{Camacho et~al.(2009)Camacho, Coulouris, Avagyan, Ma, Papadopoulos,
+  Bealer and Madden}]{Camacho:2009fc}
+\bibinfo{author}{Camacho, C.}, \bibinfo{author}{Coulouris, G.},
+  \bibinfo{author}{Avagyan, V.}, \bibinfo{author}{Ma, N.},
+  \bibinfo{author}{Papadopoulos, J.}, \bibinfo{author}{Bealer, K.},
+  \bibinfo{author}{Madden, T.L.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{{BLAST+: architecture and applications}}.
+\newblock \bibinfo{journal}{BMC Bioinformatics} \bibinfo{volume}{10},
+  \bibinfo{pages}{421}.
+%Type = Article
+\bibitem[{Cox et~al.(2010)Cox, Peterson and Biggs}]{Cox:2010ch}
+\bibinfo{author}{Cox, M.P.}, \bibinfo{author}{Peterson, D.A.},
+  \bibinfo{author}{Biggs, P.J.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{{SolexaQA: At-a-glance quality assessment of Illumina
+  second-generation sequencing data}}.
+\newblock \bibinfo{journal}{BMC Bioinformatics} \bibinfo{volume}{11},
+  \bibinfo{pages}{485}.
+%Type = Article
+\bibitem[{Earl et~al.(2011)Earl, Bradnam, St~John, Darling, Lin, Fass, Yu,
+  Buffalo, Zerbino, Diekhans, Nguyen, Ariyaratne, Sung, Ning, Haimel, Simpson,
+  Fonseca, Birol, Docking, Ho, Rokhsar, Chikhi, Lavenier, Chapuis, Naquin,
+  Maillet, Schatz, Kelley, Phillippy, Koren, Yang, Wu, Chou, Srivastava, Shaw,
+  Ruby, Skewes-Cox, Betegon, Dimon, Solovyev, Seledtsov, Kosarev, Vorobyev,
+  Ramirez-Gonzalez, Leggett, MacLean, Xia, Luo, Li, Xie, Liu, Gnerre,
+  Maccallum, Przybylski, Ribeiro, Yin, Sharpe, Hall, Kersey, Durbin, Jackman,
+  Chapman, Huang, DeRisi, Caccamo, Li, Jaffe, Green, Haussler, Korf and
+  Paten}]{Earl:2011gt}
+\bibinfo{author}{Earl, D.}, \bibinfo{author}{Bradnam, K.},
+  \bibinfo{author}{St~John, J.}, \bibinfo{author}{Darling, A.},
+  \bibinfo{author}{Lin, D.}, \bibinfo{author}{Fass, J.}, \bibinfo{author}{Yu,
+  H.O.K.}, \bibinfo{author}{Buffalo, V.}, \bibinfo{author}{Zerbino, D.R.},
+  \bibinfo{author}{Diekhans, M.}, \bibinfo{author}{Nguyen, N.},
+  \bibinfo{author}{Ariyaratne, P.N.}, \bibinfo{author}{Sung, W.K.},
+  \bibinfo{author}{Ning, Z.}, \bibinfo{author}{Haimel, M.},
+  \bibinfo{author}{Simpson, J.T.}, \bibinfo{author}{Fonseca, N.A.},
+  \bibinfo{author}{Birol, I.}, \bibinfo{author}{Docking, T.R.},
+  \bibinfo{author}{Ho, I.Y.}, \bibinfo{author}{Rokhsar, D.S.},
+  \bibinfo{author}{Chikhi, R.}, \bibinfo{author}{Lavenier, D.},
+  \bibinfo{author}{Chapuis, G.}, \bibinfo{author}{Naquin, D.},
+  \bibinfo{author}{Maillet, N.}, \bibinfo{author}{Schatz, M.C.},
+  \bibinfo{author}{Kelley, D.R.}, \bibinfo{author}{Phillippy, A.M.},
+  \bibinfo{author}{Koren, S.}, \bibinfo{author}{Yang, S.P.},
+  \bibinfo{author}{Wu, W.}, \bibinfo{author}{Chou, W.C.},
+  \bibinfo{author}{Srivastava, A.}, \bibinfo{author}{Shaw, T.I.},
+  \bibinfo{author}{Ruby, J.G.}, \bibinfo{author}{Skewes-Cox, P.},
+  \bibinfo{author}{Betegon, M.}, \bibinfo{author}{Dimon, M.T.},
+  \bibinfo{author}{Solovyev, V.}, \bibinfo{author}{Seledtsov, I.},
+  \bibinfo{author}{Kosarev, P.}, \bibinfo{author}{Vorobyev, D.},
+  \bibinfo{author}{Ramirez-Gonzalez, R.}, \bibinfo{author}{Leggett, R.},
+  \bibinfo{author}{MacLean, D.}, \bibinfo{author}{Xia, F.},
+  \bibinfo{author}{Luo, R.}, \bibinfo{author}{Li, Z.}, \bibinfo{author}{Xie,
+  Y.}, \bibinfo{author}{Liu, B.}, \bibinfo{author}{Gnerre, S.},
+  \bibinfo{author}{Maccallum, I.}, \bibinfo{author}{Przybylski, D.},
+  \bibinfo{author}{Ribeiro, F.J.}, \bibinfo{author}{Yin, S.},
+  \bibinfo{author}{Sharpe, T.}, \bibinfo{author}{Hall, G.},
+  \bibinfo{author}{Kersey, P.J.}, \bibinfo{author}{Durbin, R.},
+  \bibinfo{author}{Jackman, S.D.}, \bibinfo{author}{Chapman, J.A.},
+  \bibinfo{author}{Huang, X.}, \bibinfo{author}{DeRisi, J.L.},
+  \bibinfo{author}{Caccamo, M.}, \bibinfo{author}{Li, Y.},
+  \bibinfo{author}{Jaffe, D.B.}, \bibinfo{author}{Green, R.E.},
+  \bibinfo{author}{Haussler, D.}, \bibinfo{author}{Korf, I.},
+  \bibinfo{author}{Paten, B.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Assemblathon 1: A competitive assessment of
+  \textit{de novo} short read assembly methods}}.
+\newblock \bibinfo{journal}{Genome Research} \bibinfo{volume}{21},
+  \bibinfo{pages}{2224--2241}.
+%Type = Article
+\bibitem[{Grabherr et~al.(2011)Grabherr, Haas, Yassour, Levin, Thompson, Amit,
+  Adiconis, Fan, Raychowdhury, Zeng, Chen, Mauceli, Hacohen, Gnirke, Rhind,
+  di~Palma, Birren, Nusbaum, Lindblad-Toh, Friedman and
+  Regev}]{Grabherr:2011jba}
+\bibinfo{author}{Grabherr, M.G.}, \bibinfo{author}{Haas, B.J.},
+  \bibinfo{author}{Yassour, M.}, \bibinfo{author}{Levin, J.Z.},
+  \bibinfo{author}{Thompson, D.A.}, \bibinfo{author}{Amit, I.},
+  \bibinfo{author}{Adiconis, X.}, \bibinfo{author}{Fan, L.},
+  \bibinfo{author}{Raychowdhury, R.}, \bibinfo{author}{Zeng, Q.},
+  \bibinfo{author}{Chen, Z.}, \bibinfo{author}{Mauceli, E.},
+  \bibinfo{author}{Hacohen, N.}, \bibinfo{author}{Gnirke, a.},
+  \bibinfo{author}{Rhind, N.}, \bibinfo{author}{di~Palma, F.},
+  \bibinfo{author}{Birren, B.W.}, \bibinfo{author}{Nusbaum, C.},
+  \bibinfo{author}{Lindblad-Toh, K.}, \bibinfo{author}{Friedman, N.},
+  \bibinfo{author}{Regev, A.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Full-length transcriptome assembly from RNA-Seq data
+  without a reference genome}}.
+\newblock \bibinfo{journal}{Nature Biotechnology} \bibinfo{volume}{29},
+  \bibinfo{pages}{644--U130}.
+%Type = Article
+\bibitem[{Griebel et~al.(2012)Griebel, Zacher, Ribeca, Raineri, Lacroix,
+  Guig{\'o} and Sammeth}]{Griebel:2012ti}
+\bibinfo{author}{Griebel, T.}, \bibinfo{author}{Zacher, B.},
+  \bibinfo{author}{Ribeca, P.}, \bibinfo{author}{Raineri, E.},
+  \bibinfo{author}{Lacroix, V.}, \bibinfo{author}{Guig{\'o}, R.},
+  \bibinfo{author}{Sammeth, M.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{Modelling and simulating generic RNA-Seq experiments
+  with the flux simulator.}}
+\newblock \bibinfo{journal}{Nucleic Acids Research} \bibinfo{volume}{40},
+  \bibinfo{pages}{10073--10083}.
+%Type = Article
+\bibitem[{Hsu et~al.(2012)Hsu, Chien, Hu, Chen, Wu, Feng, Haymer and
+  Chen}]{Hsu:2012dg}
+\bibinfo{author}{Hsu, J.C.}, \bibinfo{author}{Chien, T.Y.},
+  \bibinfo{author}{Hu, C.C.}, \bibinfo{author}{Chen, M.J.M.},
+  \bibinfo{author}{Wu, W.J.}, \bibinfo{author}{Feng, H.T.},
+  \bibinfo{author}{Haymer, D.S.}, \bibinfo{author}{Chen, C.Y.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{Discovery of Genes Related to Insecticide Resistance
+  in \emph{Bactrocera dorsalis} by Functional Genomic Analysis of a \emph{De
+  Novo} Assembled Transcriptome}}.
+\newblock \bibinfo{journal}{PLOS ONE} \bibinfo{volume}{7},
+  \bibinfo{pages}{e40950}.
+%Type = Article
+\bibitem[{Kent(2002)}]{Kent:2002jd}
+\bibinfo{author}{Kent, W.J.}, \bibinfo{year}{2002}.
+\newblock \bibinfo{title}{{BLAT---The BLAST-Like Alignment Tool}}.
+\newblock \bibinfo{journal}{Genome Research} \bibinfo{volume}{12},
+  \bibinfo{pages}{656--664}.
+%Type = Article
+\bibitem[{Linnen et~al.(2013)Linnen, Poh, Peterson, Barrett, Larson, Jensen and
+  Hoekstra}]{Linnen:2013ir}
+\bibinfo{author}{Linnen, C.R.}, \bibinfo{author}{Poh, Y.P.},
+  \bibinfo{author}{Peterson, B.K.}, \bibinfo{author}{Barrett, R.D.H.},
+  \bibinfo{author}{Larson, J.G.}, \bibinfo{author}{Jensen, J.D.},
+  \bibinfo{author}{Hoekstra, H.E.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{Adaptive Evolution of Multiple Traits Through
+  Multiple Mutations at a Single Gene}}.
+\newblock \bibinfo{journal}{Science (New York, NY)} \bibinfo{volume}{339},
+  \bibinfo{pages}{1312--1316}.
+%Type = Article
+\bibitem[{Liu et~al.(2012)Liu, Yuan, Yiu, Li, Xie, Chen, Shi, Zhang, Li, Lam
+  and Luo}]{Liu:2012iv}
+\bibinfo{author}{Liu, B.}, \bibinfo{author}{Yuan, J.}, \bibinfo{author}{Yiu,
+  S.M.}, \bibinfo{author}{Li, Z.}, \bibinfo{author}{Xie, Y.},
+  \bibinfo{author}{Chen, Y.}, \bibinfo{author}{Shi, Y.},
+  \bibinfo{author}{Zhang, H.}, \bibinfo{author}{Li, Y.}, \bibinfo{author}{Lam,
+  T.W.}, \bibinfo{author}{Luo, R.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{COPE: an accurate k-mer-based pair-end reads
+  connection tool to facilitate genome assembly}}.
+\newblock \bibinfo{journal}{Bioinformatics (Oxford, England)}
+  \bibinfo{volume}{28}, \bibinfo{pages}{2870--2874}.
+%Type = Article
+\bibitem[{Lohse et~al.(2012)Lohse, Bolger, Nagel, Fernie, Lunn, Stitt and
+  Usadel}]{Lohse:2012fg}
+\bibinfo{author}{Lohse, M.}, \bibinfo{author}{Bolger, A.M.},
+  \bibinfo{author}{Nagel, A.}, \bibinfo{author}{Fernie, A.R.},
+  \bibinfo{author}{Lunn, J.E.}, \bibinfo{author}{Stitt, M.},
+  \bibinfo{author}{Usadel, B.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{RobiNA: a user-friendly, integrated software
+  solution for RNA-Seq-based transcriptomics}}.
+\newblock \bibinfo{journal}{Nucleic Acids Research} \bibinfo{volume}{40},
+  \bibinfo{pages}{W622--W627}.
+%Type = Article
+\bibitem[{Looso et~al.(2013)Looso, Preussner, Sousounis, Bruckskotten, Michel,
+  Lignelli, Reinhardt, Hoeffner, Krueger, Tsonis, Borchardt and
+  Braun}]{Looso:2013eu}
+\bibinfo{author}{Looso, M.}, \bibinfo{author}{Preussner, J.},
+  \bibinfo{author}{Sousounis, K.}, \bibinfo{author}{Bruckskotten, M.},
+  \bibinfo{author}{Michel, C.S.}, \bibinfo{author}{Lignelli, E.},
+  \bibinfo{author}{Reinhardt, R.}, \bibinfo{author}{Hoeffner, S.},
+  \bibinfo{author}{Krueger, M.}, \bibinfo{author}{Tsonis, P.A.},
+  \bibinfo{author}{Borchardt, T.}, \bibinfo{author}{Braun, T.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{A \textit{de novo} assembly of the newt
+  transcriptome combined with proteomic validation identifies new protein
+  families expressed during tissue regeneration}}.
+\newblock \bibinfo{journal}{Genome Biology} \bibinfo{volume}{14},
+  \bibinfo{pages}{R16}.
+%Type = Article
+\bibitem[{MacManes and Eisen(2013)}]{MacManes:2013tva}
+\bibinfo{author}{MacManes, M.D.}, \bibinfo{author}{Eisen, M.B.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{Improving transcriptome assembly through error
+  correction of high-throughput sequence reads}}.
+\newblock \bibinfo{journal}{arXiv.org}
+  \href{http://arxiv.org/abs/1304.0817v2}{\tt arXiv:1304.0817v2}.
+%Type = Article
+\bibitem[{Martin(2011)}]{Martin:2011va}
+\bibinfo{author}{Martin, M.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Cutadapt removes adapter sequences from
+  high-throughput sequencing reads}}.
+\newblock \bibinfo{journal}{EMBnet.journal} \bibinfo{volume}{17},
+  \bibinfo{pages}{pp. 10--12}.
+%Type = Article
+\bibitem[{Mu\~noz Merida et~al.(2013)Mu\~noz Merida, Gonzalez-Plaza, Canada,
+  Blanco, Garcia-Lopez, Rodriguez, Pedrola, Sicardo, Hernandez, De~la Rosa,
+  Belaj, Gil-Borja, Luque, Martinez-Rivas, Pisano, Trelles, Valpuesta and
+  Beuzon}]{MunozMerida:2013dw}
+\bibinfo{author}{Mu\~noz Merida, A.}, \bibinfo{author}{Gonzalez-Plaza, J.J.},
+  \bibinfo{author}{Canada, A.}, \bibinfo{author}{Blanco, A.M.},
+  \bibinfo{author}{Garcia-Lopez, M.d.C.}, \bibinfo{author}{Rodriguez, J.M.},
+  \bibinfo{author}{Pedrola, L.}, \bibinfo{author}{Sicardo, M.D.},
+  \bibinfo{author}{Hernandez, M.L.}, \bibinfo{author}{De~la Rosa, R.},
+  \bibinfo{author}{Belaj, A.}, \bibinfo{author}{Gil-Borja, M.},
+  \bibinfo{author}{Luque, F.}, \bibinfo{author}{Martinez-Rivas, J.M.},
+  \bibinfo{author}{Pisano, D.G.}, \bibinfo{author}{Trelles, O.},
+  \bibinfo{author}{Valpuesta, V.}, \bibinfo{author}{Beuzon, C.R.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{De Novo Assembly and Functional Annotation of the
+  Olive (\textit{Olea europaea}) Transcriptome}}.
+\newblock \bibinfo{journal}{DNA Research} \bibinfo{volume}{20},
+  \bibinfo{pages}{93--108}.
+%Type = Article
+\bibitem[{Narum et~al.(2013)Narum, Campbell, Meyer, Miller and
+  Hardy}]{Narum:2013kc}
+\bibinfo{author}{Narum, S.R.}, \bibinfo{author}{Campbell, N.R.},
+  \bibinfo{author}{Meyer, K.A.}, \bibinfo{author}{Miller, M.R.},
+  \bibinfo{author}{Hardy, R.W.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{Thermal adaptation and acclimation of ectotherms
+  from differing aquatic climates.}}
+\newblock \bibinfo{journal}{Molecular Ecology} , \bibinfo{pages}{1--8}.
+%Type = Article
+\bibitem[{Pyrkosz et~al.(2013)Pyrkosz, Cheng and Brown}]{Pyrkosz:2013tm}
+\bibinfo{author}{Pyrkosz, A.B.}, \bibinfo{author}{Cheng, H.},
+  \bibinfo{author}{Brown, C.T.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{RNA-Seq Mapping Errors When Using Incomplete
+  Reference Transcriptomes of Vertebrates}}.
+\newblock \bibinfo{journal}{\url{http://arxiv.org/abs/1303.2411v1}}
+  \href{http://arxiv.org/abs/1303.2411v1}{\tt arXiv:1303.2411v1}.
+%Type = Article
+\bibitem[{R~Core Development~Team(2011)}]{RALanguageandEn:wf}
+\bibinfo{author}{R~Core Development~Team, F.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{R: A Language and Environment for Statistical
+  Computing}} .
+%Type = Article
+\bibitem[{Riesgo et~al.(2012)Riesgo, Perez-Porro, Carmona, Leys and
+  Giribet}]{Riesgo:2011do}
+\bibinfo{author}{Riesgo, A.}, \bibinfo{author}{Perez-Porro, A.R.},
+  \bibinfo{author}{Carmona, S.}, \bibinfo{author}{Leys, S.P.},
+  \bibinfo{author}{Giribet, G.}, \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{Optimization of preservation and storage time of
+  sponge tissues to obtain quality mRNA for next-generation sequencing.}}
+\newblock \bibinfo{journal}{Molecular Ecology Resources} \bibinfo{volume}{12},
+  \bibinfo{pages}{312--322}.
+%Type = Article
+\bibitem[{Yang et~al.(2013)Yang, Chockalingam and Aluru}]{Yang:2013ck}
+\bibinfo{author}{Yang, X.}, \bibinfo{author}{Chockalingam, S.P.},
+  \bibinfo{author}{Aluru, S.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{A survey of error-correction methods for
+  next-generation sequencing}}.
+\newblock \bibinfo{journal}{Briefings In Bioinformatics} \bibinfo{volume}{14},
+  \bibinfo{pages}{56--66}.
+
+\end{thebibliography}

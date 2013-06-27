@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: trimming.aux
+The style file: model2-names.bst.bst
+Database file #1: formatted.bib.bib
+I was expecting a `,' or a `}'---line 16905 of file formatted.bib.bib
+ : 
+ : @article{THORNHILL:1983vi,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 35869 of file formatted.bib.bib
+ : 
+ : @article{Gibbons:2009fh,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty journal in RALanguageandEn:wf
+You've used 20 entries,
+            2990 wiz_defined-function locations,
+            761 strings with 12895 characters,
+and the built_in function-call counts, 26140 in all, are:
+= -- 1448
+> -- 2304
+< -- 4
++ -- 869
+- -- 849
+* -- 3681
+:= -- 3943
+add.period$ -- 59
+call.type$ -- 20
+change.case$ -- 383
+chr.to.int$ -- 20
+cite$ -- 21
+duplicate$ -- 1440
+empty$ -- 1193
+format.name$ -- 905
+if$ -- 4430
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 414
+newline$ -- 114
+num.names$ -- 80
+pop$ -- 588
+preamble$ -- 1
+purify$ -- 363
+quote$ -- 0
+skip$ -- 272
+stack$ -- 0
+substring$ -- 589
+swap$ -- 1589
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 180
+warning$ -- 1
+while$ -- 88
+width$ -- 0
+write$ -- 290
+(There were 2 error messages)
