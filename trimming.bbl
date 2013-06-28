@@ -143,7 +143,7 @@
 \bibitem[{Grabherr et~al.(2011)Grabherr, Haas, Yassour, Levin, Thompson, Amit,
   Adiconis, Fan, Raychowdhury, Zeng, Chen, Mauceli, Hacohen, Gnirke, Rhind,
   di~Palma, Birren, Nusbaum, Lindblad-Toh, Friedman and
-  Regev}]{Grabherr:2011jba}
+  Regev}]{Grabherr:2011jb}
 \bibinfo{author}{Grabherr, M.G.}, \bibinfo{author}{Haas, B.J.},
   \bibinfo{author}{Yassour, M.}, \bibinfo{author}{Levin, J.Z.},
   \bibinfo{author}{Thompson, D.A.}, \bibinfo{author}{Amit, I.},
@@ -156,9 +156,9 @@
   \bibinfo{author}{Lindblad-Toh, K.}, \bibinfo{author}{Friedman, N.},
   \bibinfo{author}{Regev, A.}, \bibinfo{year}{2011}.
 \newblock \bibinfo{title}{{Full-length transcriptome assembly from RNA-Seq data
-  without a reference genome}}.
+  without a reference genome.}}
 \newblock \bibinfo{journal}{Nature Biotechnology} \bibinfo{volume}{29},
-  \bibinfo{pages}{644--U130}.
+  \bibinfo{pages}{644--652}.
 %Type = Article
 \bibitem[{Griebel et~al.(2012)Griebel, Zacher, Ribeca, Raineri, Lacroix,
   Guig{\'o} and Sammeth}]{Griebel:2012ti}
@@ -170,6 +170,27 @@
   with the flux simulator.}}
 \newblock \bibinfo{journal}{Nucleic Acids Research} \bibinfo{volume}{40},
   \bibinfo{pages}{10073--10083}.
+%Type = Article
+\bibitem[{Haas et~al.(2013)Haas, Papanicolaou, Yassour, Grabherr, Blood,
+  Bowden, Couger, Eccles, Li, Lieber, MacManes, Ott, Orvis, Pochet, Strozzi,
+  Weeks, Westerman, William, Dewey, Henschel, LeDuc, Friedman and
+  Regev}]{Haas:jq}
+\bibinfo{author}{Haas, B.J.}, \bibinfo{author}{Papanicolaou, A.},
+  \bibinfo{author}{Yassour, M.}, \bibinfo{author}{Grabherr, M.},
+  \bibinfo{author}{Blood, P.}, \bibinfo{author}{Bowden, J.},
+  \bibinfo{author}{Couger, M.}, \bibinfo{author}{Eccles, D.},
+  \bibinfo{author}{Li, B.}, \bibinfo{author}{Lieber, M.},
+  \bibinfo{author}{MacManes, M.D.}, \bibinfo{author}{Ott, M.},
+  \bibinfo{author}{Orvis, J.}, \bibinfo{author}{Pochet, N.},
+  \bibinfo{author}{Strozzi, F.}, \bibinfo{author}{Weeks, N.},
+  \bibinfo{author}{Westerman, R.}, \bibinfo{author}{William, T.},
+  \bibinfo{author}{Dewey, C.N.}, \bibinfo{author}{Henschel, R.},
+  \bibinfo{author}{LeDuc, R.G.}, \bibinfo{author}{Friedman, N.},
+  \bibinfo{author}{Regev, A.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{{\emph{\textit{De novo}} transcript sequence
+  reconstruction from RNA-seq using the Trinity platform for reference
+  generation and analysis}}.
+\newblock \bibinfo{journal}{Nature protocols} , \bibinfo{pages}{1--21}.
 %Type = Article
 \bibitem[{Hsu et~al.(2012)Hsu, Chien, Hu, Chen, Wu, Feng, Haymer and
   Chen}]{Hsu:2012dg}
@@ -247,13 +268,6 @@
   correction of high-throughput sequence reads}}.
 \newblock \bibinfo{journal}{arXiv.org}
   \href{http://arxiv.org/abs/1304.0817v2}{\tt arXiv:1304.0817v2}.
-%Type = Article
-\bibitem[{Martin(2011)}]{Martin:2011va}
-\bibinfo{author}{Martin, M.}, \bibinfo{year}{2011}.
-\newblock \bibinfo{title}{{Cutadapt removes adapter sequences from
-  high-throughput sequencing reads}}.
-\newblock \bibinfo{journal}{EMBnet.journal} \bibinfo{volume}{17},
-  \bibinfo{pages}{pp. 10--12}.
 %Type = Article
 \bibitem[{Mu\~noz Merida et~al.(2013)Mu\~noz Merida, Gonzalez-Plaza, Canada,
   Blanco, Garcia-Lopez, Rodriguez, Pedrola, Sicardo, Hernandez, De~la Rosa,
