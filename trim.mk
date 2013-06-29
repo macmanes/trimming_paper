@@ -17,7 +17,7 @@ raw.Trinity.fasta:out_1.fastq
 
 right.1.fq right.2.fq right.5.fq right.10.fq right.15.fq right.20.fq: out_1.fastq
 	for TRIM in 1 2 5 10 15 20; do \
-		java -Xmx30g -jar $$TRIMMMOMATIC/trimmomatic-0.30.jar PE \
+		java -Xmx30g -jar $$(TRIMMMOMATIC)/trimmomatic-0.30.jar PE \
 		-phred33 -threads 12 \
 		out_1.fastq \
 		out_2.fastq \
