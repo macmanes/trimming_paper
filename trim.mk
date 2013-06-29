@@ -2,7 +2,7 @@
 
 SOLEXA=/home/macmanes/SolexaQA_v.2.1/SolexaQA_v.2.1
 TRINITY=/home/macmanes/trinityrnaseq_r2013-02-25
-TRIMMOMATIC = $(/home/macmanes/software)
+TRIMMOMATIC := $(/home/macmanes/software)
 
 real: out_1.fastq.quality out_1.fastq raw.Trinity.fasta right.1.fq right.2.fq right.5.fq right.10.fq right.15.fq right.20.fq real.1.Trinity.fasta real.2.Trinity.fasta real.5.Trinity.fasta real.10.Trinity.fasta real.15.Trinity.fasta real.20.Trinity.fasta
 sim: right.fastq.quality sim.Trinity.fasta sim.left.1.fq sim.left.2.fq sim.left.5.fq sim.left.10.fq sim.left.15.fq sim.left.20.fq sim.1.Trinity.fasta sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta sim.15.Trinity.fasta sim.20.Trinity.fasta
