@@ -1,4 +1,4 @@
-#!/usr/bin/make
+#!/usr/bin/make -s
 
 SOLEXA := /home/macmanes/SolexaQA_v.2.1/SolexaQA_v.2.1
 TRINITY := /home/macmanes/trinityrnaseq_r2013-02-25
@@ -7,9 +7,13 @@ MUS := /media/macmanes/hd/flux/genomes/mus/Mus_musculus.GRCm38.71.cdna.all.fa
 
 real: out_1.fastq.quality out_1.fastq raw.Trinity.fasta right.1.fq right.2.fq right.5.fq right.10.fq right.15.fq right.20.fq real.1.Trinity.fasta \
 	real.2.Trinity.fasta real.5.Trinity.fasta real.10.Trinity.fasta real.15.Trinity.fasta real.20.Trinity.fasta
+
 sim: right.fq.quality sim.Trinity.fasta sim.left.1.fq sim.left.2.fq sim.left.5.fq sim.left.10.fq sim.left.15.fq sim.left.20.fq sim.1.Trinity.fasta \
-	sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta sim.15.Trinity.fasta sim.20.Trinity.fasta sim.1.Trinity.fasta.pslx \
-	sim.2.Trinity.fasta.pslx sim.5.Trinity.fasta.pslx sim.10.Trinity.fasta.pslx sim.15.Trinity.fasta.pslx sim.20.Trinity.fasta.pslx
+	sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta sim.15.Trinity.fasta sim.20.Trinity.fasta 
+
+pslx: sim.1.Trinity.fasta.pslx sim.2.Trinity.fasta.pslx sim.5.Trinity.fasta.pslx sim.10.Trinity.fasta.pslx sim.15.Trinity.fasta.pslx sim.20.Trinity.fasta.pslx \
+	sim.Trinity.fasta.pslx real.1.Trinity.fasta.pslx real.2.Trinity.fasta.pslx real.5.Trinity.fasta.pslx real.10.Trinity.fasta.pslx real.15.Trinity.fasta.pslx \
+	real.20.Trinity.fasta.pslx raw.Trinity.fasta.pslx
 
 out_1.fastq.quality:out_1.fastq
 	perl $(SOLEXA)/SolexaQA.pl -p 0.01 out_1.fastq
@@ -18,7 +22,6 @@ out_1.fastq.quality:out_1.fastq
 	
 raw.Trinity.fasta:out_1.fastq
 	$(TRINITY)/Trinity.pl --full_cleanup --seqType fq --JM 30G --left out_1.fastq  --right out_2.fastq  --CPU 8 --output raw
-	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query raw.Trinity.fasta
 
 right.1.fq right.2.fq right.5.fq right.10.fq right.15.fq right.20.fq: out_1.fastq
 	@echo About to start trimming
@@ -55,7 +58,7 @@ right.fq.quality:right.fq
 	cp right.fq.quality ~/Dropbox/
 	cp right.fq.quality.pdf ~/Dropbox/
 	
-sim.Trinity.fasta:out_1.fastq
+sim.Trinity.fasta:right.fq.fastq
 	$(TRINITY)/Trinity.pl --full_cleanup --seqType fq --JM 30G --left left.fq  --right right.fq  --CPU 8 --output sim
 
 sim.left.1.fq sim.left.2.fq sim.left.5.fq sim.left.10.fq sim.left.15.fq sim.left.20.fq: right.fq
@@ -86,7 +89,12 @@ sim.1.Trinity.fasta sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta
 		$(TRINITY)/Trinity.pl --full_cleanup --seqType fq --JM 30G --left sim.left.$$TRIM.fq --right sim.right.$$TRIM.fq --CPU 8 --output sim.$$TRIM ; \
 	done
 
-sim.1.Trinity.fasta.pslx sim.2.Trinity.fasta.pslx sim.5.Trinity.fasta.pslx sim.10.Trinity.fasta.pslx sim.15.Trinity.fasta.pslx sim.20.Trinity.fasta.pslx: sim.1.Trinity.fasta sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta sim.15.Trinity.fasta sim.20.Trinity.fasta
+
+
+sim.1.Trinity.fasta.pslx sim.2.Trinity.fasta.pslx sim.5.Trinity.fasta.pslx sim.10.Trinity.fasta.pslx sim.15.Trinity.fasta.pslx sim.20.Trinity.fasta.pslx \
+sim.Trinity.fasta.pslx real.1.Trinity.fasta.pslx real.2.Trinity.fasta.pslx real.5.Trinity.fasta.pslx real.10.Trinity.fasta.pslx real.15.Trinity.fasta.pslx \
+real.20.Trinity.fasta.pslx raw.Trinity.fasta.pslx: sim.1.Trinity.fasta sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta sim.15.Trinity.fasta \
+sim.20.Trinity.fasta sim.Trinity.fasta real.1.Trinity.fasta real.2.Trinity.fasta real.5.Trinity.fasta real.10.Trinity.fasta real.15.Trinity.fasta real.20.Trinity.fasta raw.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.2.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.1.Trinity.fasta
@@ -94,5 +102,12 @@ sim.1.Trinity.fasta.pslx sim.2.Trinity.fasta.pslx sim.5.Trinity.fasta.pslx sim.1
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.10.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.15.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.20.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query raw.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.1.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.2.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.5.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.10.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.15.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.20.Trinity.fasta
 	rm *maps *selected *summary
 
