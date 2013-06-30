@@ -1,6 +1,7 @@
 #!/usr/bin/make -s
 
-SOLEXA := /home/macmanes/SolexaQA_v.2.1/SolexaQA_v.2.1
+SOLEXA ?= $(shell which 'SolexaQA.pl')
+#SOLEXA := /home/macmanes/SolexaQA_v.2.1/SolexaQA_v.2.1
 TRINITY := /home/macmanes/trinityrnaseq_r2013-02-25
 TRIMMOMATIC := /home/macmanes/software
 MUS := /media/macmanes/hd/flux/genomes/mus/Mus_musculus.GRCm38.71.cdna.all.fa
@@ -54,7 +55,8 @@ real.1.Trinity.fasta real.2.Trinity.fasta real.5.Trinity.fasta real.10.Trinity.f
 ##Make sim	
 	
 right.fq.quality:right.fq
-	perl $(SOLEXA)/SolexaQA.pl -p 0.01 right.fq
+	perl $(SOLEXA) -p 0.01 right.fq
+#	perl $(SOLEXA)/SolexaQA.pl -p 0.01 right.fq
 	cp right.fq.quality ~/Dropbox/
 	cp right.fq.quality.pdf ~/Dropbox/
 	
