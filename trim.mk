@@ -112,20 +112,6 @@ sim.1.Trinity.fasta sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta
 	done
 
 
-
-<<<<<<< HEAD
-sim.1.Trinity.fasta.pslx sim.2.Trinity.fasta.pslx sim.5.Trinity.fasta.pslx sim.10.Trinity.fasta.pslx sim.15.Trinity.fasta.pslx sim.20.Trinity.fasta.pslx \
-sim.Trinity.fasta.pslx real.1.Trinity.fasta.pslx real.2.Trinity.fasta.pslx real.5.Trinity.fasta.pslx real.10.Trinity.fasta.pslx real.15.Trinity.fasta.pslx \
-real.20.Trinity.fasta.pslx raw.Trinity.fasta.pslx: sim.1.Trinity.fasta sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta sim.15.Trinity.fasta \
-sim.20.Trinity.fasta sim.Trinity.fasta real.1.Trinity.fasta real.2.Trinity.fasta real.5.Trinity.fasta real.10.Trinity.fasta real.15.Trinity.fasta real.20.Trinity.fasta raw.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.2.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.1.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.5.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.10.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.15.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.20.Trinity.fasta
-=======
 pslx: 
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.2.Trinity.fasta
@@ -134,7 +120,6 @@ pslx:
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.10.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.15.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query sim.20.Trinity.fasta
->>>>>>> 799b5d39f365af57cc69a6c5acc6ba1f78a79f48
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query raw.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.1.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.2.Trinity.fasta
