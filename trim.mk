@@ -106,3 +106,25 @@ pslx:
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.20.Trinity.fasta
 	rm *maps *selected *summary
 
+orf: 
+	for i in `ls *Trinity.fasta`; do \
+		$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU 4 -t $$i --search_pfam /media/macmanes/raid/blastdb/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $i.pep; done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
