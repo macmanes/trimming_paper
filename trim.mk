@@ -22,15 +22,7 @@ real: out_1.fastq.quality out_1.fastq raw.Trinity.fasta right.1.fq right.2.fq ri
 	real.2.Trinity.fasta real.5.Trinity.fasta real.10.Trinity.fasta real.15.Trinity.fasta real.20.Trinity.fasta
 sim: right.fq.quality sim.Trinity.fasta sim.left.1.fq sim.left.2.fq sim.left.5.fq sim.left.10.fq sim.left.15.fq sim.left.20.fq sim.1.Trinity.fasta \
 	sim.2.Trinity.fasta sim.5.Trinity.fasta sim.10.Trinity.fasta sim.15.Trinity.fasta sim.20.Trinity.fasta 
-<<<<<<< HEAD
-pslx: sim.1.Trinity.fasta.pslx sim.2.Trinity.fasta.pslx sim.5.Trinity.fasta.pslx sim.10.Trinity.fasta.pslx sim.15.Trinity.fasta.pslx sim.20.Trinity.fasta.pslx \
-	sim.Trinity.fasta.pslx real.1.Trinity.fasta.pslx real.2.Trinity.fasta.pslx real.5.Trinity.fasta.pslx real.10.Trinity.fasta.pslx real.15.Trinity.fasta.pslx \
-	real.20.Trinity.fasta.pslx raw.Trinity.fasta.pslx
-full:
-=======
-
 pslx: 
->>>>>>> 799b5d39f365af57cc69a6c5acc6ba1f78a79f48
 
 out_1.fastq.quality:out_1.fastq
 	perl $(SOLEXA)/SolexaQA.pl -p 0.01 out_1.fastq
@@ -75,13 +67,8 @@ right.fq.quality:right.fq
 	cp right.fq.quality ~/Dropbox/
 	cp right.fq.quality.pdf ~/Dropbox/
 	
-<<<<<<< HEAD
 sim.Trinity.fasta:right.fq.fastq
 	$(TRINITY)/Trinity.pl --full_cleanup --seqType fq --JM 30G --left left.fq  --right right.fq  --CPU $(CPU) --output sim
-=======
-sim.Trinity.fasta:right.fq
-	$(TRINITY)/Trinity.pl --full_cleanup --seqType fq --JM 30G --left left.fq  --right right.fq  --CPU 8 --output sim
->>>>>>> 799b5d39f365af57cc69a6c5acc6ba1f78a79f48
 
 sim.left.1.fq sim.left.2.fq sim.left.5.fq sim.left.10.fq sim.left.15.fq sim.left.20.fq: right.fq
 	for TRIM in 1 2 5 10 15 20; do \
@@ -129,34 +116,9 @@ pslx:
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.20.Trinity.fasta
 	rm *maps *selected *summary
 
-<<<<<<< HEAD
 orf: 
 	for i in `ls *Trinity.fasta`; do \
 		$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU 4 -t $$i --search_pfam /media/macmanes/raid/blastdb/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $i.pep; done
-=======
-
-orf:
-        for i in `ls *Trinity.fasta`; do \
-                $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU 4 -t $$i --search_pfam /media/macmanes/raid/blastdb/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.ecli$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> d9b352980cf1f17887af9735f77de00d29c0e473
 
 
 
