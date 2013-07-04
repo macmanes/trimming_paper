@@ -137,15 +137,17 @@ pslx:
 >>>>>>> 799b5d39f365af57cc69a6c5acc6ba1f78a79f48
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query raw.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.1.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.2.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.2.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.5.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.10.Trinity.fasta
-#	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.15.Trinity.fasta
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.15.Trinity.fasta
 	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query real.20.Trinity.fasta
 	rm *maps *selected *summary
 
 
-$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t raw.Trinity.fasta --search_pfam $(PFAM)
+orf:
+        for i in `ls *Trinity.fasta`; do \
+                $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU 4 -t $$i --search_pfam /media/macmanes/raid/blastdb/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.ecli$
 
 
 
