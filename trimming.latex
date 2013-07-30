@@ -39,7 +39,7 @@ The widespread and rapid adoption of high-throughput sequencing technologies has
 
 \doublespacing
 \linenumbers
-
+\begin{flushleft}
 \vspace{12mm}
 
 \section*{Introduction}
@@ -61,6 +61,7 @@ Here, I attempt to provide recommendations regarding the efficient trimming of h
 \noindent
 Because I was interested in understanding the effects of sequence read quality trimming on the assembly of vertebrate transcriptome assembly, we elected to simulate thirty million 100nt paired-end Illumina reads with the program \textsc{Flux Simulator} \citep{Griebel:2012ti}.  This dataset is fully described in a previous publication \citep{MacManes:2013tva}. In addition to this simulated dataset, an empirically derived dataset consisting of 30 million 76nt paired-end mRNA Illumina reads, which is a subset of the well-characterized 50M read set continued within the \textsc{Trinity} software package. Quality metrics for the raw and quality trimmed reads were generated using the program \textsc{SolexaQA} \citep{Cox:2010ch}, and visualized using R \citep{RALanguageandEn:wf}. \\
 
+
 \noindent
 Both simulated and empirical datasets were trimmed at varying quality thresholds using the software packages \textsc{Trimmomatic} \citep{Lohse:2012fg}. Specifically, sequences were trimmed at both 5' and 3' ends using \textsc{Phred} $\leq$ 0, $\leq$ 1, $\leq$ 5, $\leq$ 10, and $\leq$ 20. Though adapter trimming is included in the functionality the \textsc{Trimmomatic} packages, because the simulated dataset was produced sans adapter contamination-- for the purposes of comparison, the empirical dataset was cleansed of adapter before quality trimming. \\
 
@@ -81,7 +82,7 @@ Transcriptome assemblies were generated using the default settings of the progra
 \section*{Figures \& Tables}
 
 \textbf{\hypertarget{Figure 1}{Figure 1}} \\
-\centerline{\includegraphics[width=40.0\baselineskip]{Figure1.eps}}
+\centerline{\includegraphics[width=40.0\baselineskip]{Figure1a.eps}}
 
 
 \noindent
@@ -92,7 +93,7 @@ Fig. 1
 
 \noindent
 Fig. 2 
-
+\end{flushleft}
 \end{document}
 
 
