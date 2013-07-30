@@ -27,33 +27,30 @@ check:
 	@echo Reptile is installed"\n"
 
 
-
-
-all: 10M.SRR449363_1.fastq 10M.SRR449363_2.fastq 10M.Trinity.fasta 10M.left.2.fq 10M.left.5.fq 10M.left.10.fq 10M.left.20.fq \
+all: check run.Trinity.fasta 10M.SRR449363_1.fastq 10M.SRR449363_2.fastq  \
+	10M.Trinity.fasta 10M.left.2.fq 10M.left.5.fq 10M.left.10.fq 10M.left.20.fq \
 	10M.2.Trinity.fasta 10M.5.Trinity.fasta 10M.10.Trinity.fasta 10M.20.Trinity.fasta \
-	right.fq.quality 20M.Trinity.fasta 20M.left.2.fq 20M.left.5.fq 20M.left.10.fq 20M.left.20.fq \
+	20M.SRR449363_1.fastq 20M.SRR449363_2.fastq \
+	20M.Trinity.fasta 20M.left.2.fq 20M.left.5.fq 20M.left.10.fq 20M.left.20.fq \	
 	20M.2.Trinity.fasta 20M.5.Trinity.fasta 20M.10.Trinity.fasta 20M.20.Trinity.fasta \
-	
-
-#sub: SRR449363_1.fastq SRR449363_1.fastq
-#10M: right.fq.quality 10M.Trinity.fasta 10M.left.2.fq 10M.left.5.fq 10M.left.10.fq 10M.left.20.fq \
-#	10M.2.Trinity.fasta 10M.5.Trinity.fasta 10M.10.Trinity.fasta 10M.20.Trinity.fasta 
-#20M: right.fq.quality 20M.Trinity.fasta 20M.left.2.fq 20M.left.5.fq 20M.left.10.fq 20M.left.20.fq \
-#	20M.2.Trinity.fasta 20M.5.Trinity.fasta 20M.10.Trinity.fasta 20M.20.Trinity.fasta 
-#pslx: 
-#orf : 
+	SRR449363_1.fastq.quality
 
 10M.SRR449363_1.fastq : SRR449363_1.fastq
 	python ~/error_correction/scripts/subsampler.py 10000000 SRR449363_1.fastq SRR449363_2.fastq
+	mv subsamp_1.fastq 10M.SRR449363_1.fastq
+	mv subsamp_1.fastq 10M.SRR449363_2.fastq		
+
 20M.SRR449363_1.fastq : SRR449363_1.fastq
 	python ~/error_correction/scripts/subsampler.py 20000000 SRR449363_1.fastq SRR449363_2.fastq
+	mv subsamp_1.fastq 20M.SRR449363_1.fastq
+	mv subsamp_1.fastq 20M.SRR449363_2.fastq
 
 SRR449363_1.fastq.quality:SRR449363_1.fastq
 	perl $(SOLEXA)/SolexaQA.pl -p 0.01 SRR449363_1.fastq
 	cp SRR449363_1.fastq.quality ~/Dropbox/
 	cp SRR449363_1.fastq.quality ~/Dropbox/
 	
-SRR449363_1.Trinity.fasta:SRR449363_1.fastq SRR449363_2.fastq
+run.Trinity.fasta:SRR449363_1.fastq SRR449363_2.fastq
 	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
 	--left $(RUN) --right $(RUN) --group_pairs_distance 999 --CPU $(CPU) --output $(RUN)
 
