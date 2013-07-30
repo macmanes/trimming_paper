@@ -14,10 +14,7 @@ MUS := /media/macmanes/hd/flux/genomes/mus/Mus_musculus.GRCm38.71.cdna.all.fa
 PFAM := /media/macmanes/raid/blastdb/Pfam-A.hmm
 
 ## Need to add 10M.Trinity.fasta, run.Trinity.fasta and SRR449363_1.fastq.quality back into all when its working fine.
-all: 10M.$(READ1) 10M.$(READ2)  \
-	10M.left.2.fq 10M.left.5.fq 10M.left.10.fq 10M.left.20.fq \
-	10M.right.2.fq 10M.right.5.fq 10M.right.10.fq 10M.right.20.fq \
-	10M.2.Trinity.fasta 10M.5.Trinity.fasta 10M.10.Trinity.fasta 10M.20.Trinity.fasta
+all: subsamp trim trin
 
 
 #SRR449363_1.fastq.quality:SRR449363_1.fastq
@@ -29,12 +26,12 @@ all: 10M.$(READ1) 10M.$(READ2)  \
 #	--left $(RUN) --right $(RUN) --group_pairs_distance 999 --CPU $(CPU) --output $(RUN)
 
 
-10M.$(READ1) 10M.$(READ2) : $(READ1) $(READ2)
-	python ~/error_correction/scripts/subsampler.py 10000 $(READ1) $(READ2)
+subsamp : $(READ1) $(READ2)
+	python ~/error_correction/scripts/subsampler.py 1000000 $(READ1) $(READ2)
 	mv subsamp_1.fastq raw.10M.$(READ1)
 	mv subsamp_2.fastq raw.10M.$(READ2)		
 
-10M.left.2.fq 10M.left.5.fq 10M.left.10.fq 10M.left.20.fq 10M.right.2.fq 10M.right.5.fq 10M.right.10.fq 10M.right.20.fq: 10M.$(READ1) 10M.$(READ2)
+trim: 
 	@echo About to start trimming
 	for TRIM in 2 5 10 20; do \
 		java -Xmx30g -jar $(TRIMMOMATIC) PE \
@@ -51,14 +48,12 @@ all: 10M.$(READ1) 10M.$(READ2)  \
 		MINLEN:25 ; \
 		cat 10M.$$TRIM.pp.1.fq 10M.$$TRIM.up.1.fq > 10M.left.$$TRIM.fq ; \
 		cat 10M.$$TRIM.pp.2.fq 10M.$$TRIM.up.2.fq > 10M.right.$$TRIM.fq ; \
-		rm 10M.$$TRIM.pp.2.fq 10M.$$TRIM.up.2.fq 10M.$$TRIM.pp.1.fq 10M.$$TRIM.up.1.fq ; \
-	done
+		rm 10M.$$TRIM.pp.2.fq 10M.$$TRIM.up.2.fq 10M.$$TRIM.pp.1.fq 10M.$$TRIM.up.1.fq ; done
 
-10M.2.Trinity.fasta 10M.5.Trinity.fasta 10M.10.Trinity.fasta 10M.20.Trinity.fasta: 10M.left.2.fq 10M.left.5.fq 10M.left.10.fq 10M.left.20.fq 10M.right.2.fq 10M.right.5.fq 10M.right.10.fq 10M.right.20.fq
+trin: 
 	for TRIM in 2 5 10 20; do \
 		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-		--left 10M.left.$$TRIM.fq --right 10M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 10M.$$TRIM; \
-	done
+		--left 10M.left.$$TRIM.fq --right 10M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 10M.$$TRIM; done
 	
 #pslx: 
 #	for i in `*Trinity.fasta`; do \
