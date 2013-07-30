@@ -13,14 +13,14 @@ TRINITY := /home/macmanes/trinityrnaseq-code/trunk
 MUS := /media/macmanes/hd/flux/genomes/mus/Mus_musculus.GRCm38.71.cdna.all.fa
 PFAM := /media/macmanes/raid/blastdb/Pfam-A.hmm
 
-## Need to add 10M.Trinity.fasta, run.Trinity.fasta and SRR449363_1.fastq.quality back into all when its working fine.
-all: subsamp trim trin
+
+all: subsamp trim trim1 trim2 trim3 trim4 trin trin1 trin2 trin3 trin4 pslx orf
 
 
-#SRR449363_1.fastq.quality:SRR449363_1.fastq
-#	perl $(SOLEXA)/SolexaQA.pl -p 0.01 SRR449363_1.fastq
-#	cp SRR449363_1.fastq.quality ~/Dropbox/
-#	cp SRR449363_1.fastq.quality ~/Dropbox/
+$(READ1).quality:
+	perl $(SOLEXA)/SolexaQA.pl -p 0.01 $(READ1)
+	cp $(READ1).quality ~/Dropbox/
+	cp $(READ1).quality.pdf ~/Dropbox/
 #run.Trinity.fasta:SRR449363_1.fastq SRR449363_2.fastq
 #	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
 #	--left $(RUN) --right $(RUN) --group_pairs_distance 999 --CPU $(CPU) --output $(RUN)
@@ -142,7 +142,6 @@ trin3:
 	for TRIM in 2 5 10 20; do \
 		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
 		--left 75M.left.$$TRIM.fq --right 75M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 75M.$$TRIM; rm 10M.left.$$TRIM.fq 10M.right.$$TRIM.fq; done
-
 trim4: 
 	@echo About to start trimming
 	for TRIM in 2 5 10 20; do \
