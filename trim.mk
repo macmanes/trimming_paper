@@ -14,7 +14,7 @@ MUS := /media/macmanes/hd/flux/genomes/mus/Mus_musculus.GRCm38.71.cdna.all.fa
 PFAM := /media/macmanes/raid/blastdb/Pfam-A.hmm
 
 
-all: $(READ1).quality subsamp trim trim1 trim2 trim3 trim4 trin trin1 trin2 trin3 trin4 pslx orf
+all: $(READ1).quality subsamp1 subsamp2 subsamp3 subsamp4  subsamp5 trim trim1 trim2 trim3 trim4 trin trin1 trin2 trin3 trin4 pslx orf
 
 
 $(READ1).quality:
