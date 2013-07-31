@@ -14,7 +14,7 @@ MUS := /media/macmanes/hd/flux/genomes/mus/Mus_musculus.GRCm38.71.cdna.all.fa
 PFAM := /media/macmanes/raid/blastdb/Pfam-A.hmm
 
 
-all: $(READ1).quality subsamp1 subsamp2 subsamp3 subsamp4  subsamp5 trim trim1 trim2 trim3 trim4 trin trin1 trin2 trin3 trin4 pslx orf
+all: $(READ1).quality subsamp1 trim trin subsamp2 trim1 trin1 subsamp3 trim2 trin2 subsamp4 trim3 trin3 subsamp5 trim4 trin4 pslx orf
 
 
 $(READ1).quality:
@@ -34,8 +34,8 @@ subsamp1 : $(READ1) $(READ2)
 trim: 
 	@echo About to start trimming
 	for TRIM in 2 5 10 20; do \
-		java -Xmx30g -jar $(TRIMMOMATIC) PE \
-		-phred33 -threads $(CPU) \
+		java -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+		-phred64 -threads $(CPU) \
 		raw.10M.$(READ1) \
 		raw.10M.$(READ2) \
 		10M.$$TRIM.pp.1.fq \
@@ -61,8 +61,8 @@ subsamp2 : $(READ1) $(READ2)
 trim1: 
 	@echo About to start trimming
 	for TRIM in 2 5 10 20; do \
-		java -Xmx30g -jar $(TRIMMOMATIC) PE \
-		-phred33 -threads $(CPU) \
+		java -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+		-phred64 -threads $(CPU) \
 		raw.20M.$(READ1) \
 		raw.20M.$(READ2) \
 		20M.$$TRIM.pp.1.fq \
@@ -88,8 +88,8 @@ subsamp3 : $(READ1) $(READ2)
 trim2: 
 	@echo About to start trimming
 	for TRIM in 2 5 10 20; do \
-		java -Xmx30g -jar $(TRIMMOMATIC) PE \
-		-phred33 -threads $(CPU) \
+		java -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+		-phred64 -threads $(CPU) \
 		raw.50M.$(READ1) \
 		raw.50M.$(READ2) \
 		50M.$$TRIM.pp.1.fq \
@@ -115,8 +115,8 @@ subsamp4 : $(READ1) $(READ2)
 trim3: 
 	@echo About to start trimming
 	for TRIM in 2 5 10 20; do \
-		java -Xmx30g -jar $(TRIMMOMATIC) PE \
-		-phred33 -threads $(CPU) \
+		java -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+		-phred64 -threads $(CPU) \
 		raw.75M.$(READ1) \
 		raw.75M.$(READ2) \
 		75M.$$TRIM.pp.1.fq \
@@ -141,8 +141,8 @@ subsamp5 : $(READ1) $(READ2)
 trim4: 
 	@echo About to start trimming
 	for TRIM in 2 5 10 20; do \
-		java -Xmx30g -jar $(TRIMMOMATIC) PE \
-		-phred33 -threads $(CPU) \
+		java -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+		-phred64 -threads $(CPU) \
 		raw.100M.$(READ1) \
 		raw.100M.$(READ2) \
 		100M.$$TRIM.pp.1.fq \
