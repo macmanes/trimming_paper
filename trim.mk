@@ -14,7 +14,7 @@ MUS := /media/macmanes/hd/flux/genomes/mus/Mus_musculus.GRCm38.71.cdna.all.fa
 PFAM := /media/macmanes/raid/blastdb/Pfam-A.hmm
 
 
-all: subsamp1 trim trin subsamp2 trim1 trin1 subsamp3 trim2 trin2 subsamp4 trim3 trin3 subsamp5 trim4 trin4 pslx orf
+all: subsamp1 trim trin subsamp2 trim1 trin1 trin1a subsamp3 trim2 trin2 subsamp4 trim3 trin3 subsamp5 trim4 trin4 pslx orf
 
 
 #$(READ1).quality:
@@ -54,7 +54,7 @@ trin:
 		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
 		--left 10M.left.$$TRIM.fq --right 10M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 10M.$$TRIM; rm 10M.left.$$TRIM.fq 10M.right.$$TRIM.fq; done
 	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-	--left raw.10M.$(READ1) --right raw.10M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.10M; rm raw.10M.$(READ1) raw.10M.$(READ2); done
+	--left raw.10M.$(READ1) --right raw.10M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.10M; rm raw.10M.$(READ1) raw.10M.$(READ2)
 
 subsamp2 : $(READ1) $(READ2)
 	python ~/error_correction/scripts/subsampler.py 20000000 $(READ1) $(READ2)
@@ -81,9 +81,10 @@ trim1:
 trin1: 
 	for TRIM in 2 5 10 20; do \
 		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-		--left 20M.left.$$TRIM.fq --right 20M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 20M.$$TRIM; rm 10M.left.$$TRIM.fq 10M.right.$$TRIM.fq; done
+		--left 20M.left.$$TRIM.fq --right 20M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 20M.$$TRIM; rm 20M.left.$$TRIM.fq 20M.right.$$TRIM.fq; done
+trin1a:
 	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-	--left raw.20M.$(READ1) --right raw.20M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.20M; rm raw.20M.$(READ1) raw.20M.$(READ2); done
+	--left raw.20M.$(READ1) --right raw.20M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.20M; rm raw.20M.$(READ1) raw.20M.$(READ2)
 
 subsamp3 : $(READ1) $(READ2)
 	python ~/error_correction/scripts/subsampler.py 50000000 $(READ1) $(READ2)
@@ -110,9 +111,9 @@ trim2:
 trin2: 
 	for TRIM in 2 5 10 20; do \
 		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-		--left 50M.left.$$TRIM.fq --right 50M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 50M.$$TRIM; rm 10M.left.$$TRIM.fq 10M.right.$$TRIM.fq; done
+		--left 50M.left.$$TRIM.fq --right 50M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 50M.$$TRIM; rm 50M.left.$$TRIM.fq 50M.right.$$TRIM.fq; done
 	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-	--left raw.50M.$(READ1) --right raw.50M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.50M; rm raw.50M.$(READ1) raw.50M.$(READ2); done
+	--left raw.50M.$(READ1) --right raw.50M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.50M; rm raw.50M.$(READ1) raw.50M.$(READ2)
 
 subsamp4 : $(READ1) $(READ2)
 	python ~/error_correction/scripts/subsampler.py 75000000 $(READ1) $(READ2)
@@ -139,9 +140,9 @@ trim3:
 trin3: 
 	for TRIM in 2 5 10 20; do \
 		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-		--left 75M.left.$$TRIM.fq --right 75M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 75M.$$TRIM; rm 10M.left.$$TRIM.fq 10M.right.$$TRIM.fq; done
+		--left 75M.left.$$TRIM.fq --right 75M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 75M.$$TRIM; rm 75M.left.$$TRIM.fq 75M.right.$$TRIM.fq; done
 	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-	--left raw.75M.$(READ1) --right raw.75M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.75M; rm raw.75M.$(READ1) raw.75M.$(READ2); done
+	--left raw.75M.$(READ1) --right raw.75M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.75M; rm raw.75M.$(READ1) raw.75M.$(READ2)
 
 subsamp5 : $(READ1) $(READ2)
 	python ~/error_correction/scripts/subsampler.py 100000000 $(READ1) $(READ2)
@@ -168,9 +169,9 @@ trim4:
 trin4: 
 	for TRIM in 2 5 10 20; do \
 		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-		--left 100M.left.$$TRIM.fq --right 100M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 100M.$$TRIM; rm 10M.left.$$TRIM.fq 10M.right.$$TRIM.fq; done
+		--left 100M.left.$$TRIM.fq --right 100M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 100M.$$TRIM; rm 100M.left.$$TRIM.fq 100M.right.$$TRIM.fq; done
 	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
-	--left raw.100M.$(READ1) --right raw.100M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.100M; rm raw.100M.$(READ1) raw.100M.$(READ2); done
+	--left raw.100M.$(READ1) --right raw.100M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.100M; rm raw.100M.$(READ1) raw.100M.$(READ2)
 
 pslx: 
 	for i in `*Trinity.fasta`; do \
