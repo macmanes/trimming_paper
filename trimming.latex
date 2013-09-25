@@ -1,14 +1,28 @@
-\documentclass[10.5pt]{article}
-\usepackage{longtable}
+\documentclass[11pt]{article}
 \usepackage{graphicx}
 \usepackage{lineno}
 \usepackage{amssymb}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, urlcolor=blue, citecolor=black}
-\usepackage{natbib}
 \usepackage{fullpage}
+\usepackage{textpos}
+\usepackage[numbers, sort&compress]{natbib}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{color}
 \usepackage{setspace}
+\usepackage{textcomp}
+\hypersetup{colorlinks=true, urlcolor=blue, citecolor=black}
+\usepackage{soul}
+
+\onehalfspacing
+\thispagestyle{empty}
+\renewcommand{\familydefault}{\sfdefault}
+
+\pagestyle{empty} 
 \begin{document}
+\parindent 0.000000001in
+
+
 \begin{flushleft}
 {\large
 \textbf{On the optimal trimming of high-throughput mRNA sequence data}
@@ -17,12 +31,13 @@
 \vspace{8mm}
 
 \noindent
-Matthew D MacManes$^{1,2}$$^\ast$\\
+Matthew D MacManes$^{1,2,3}$$^\ast$\\
 \vspace{4mm}
 
 
-\bf{1} \textnormal{\em{University of California, Berkeley. Berkeley, CA 94720}}  \\
-\bf{2} \textnormal{\em{California Institute of Quantitative Biology}} \\
+\bf{1} \textnormal{\em{University of New Hampshire. Durham, NH 03824}}  \\
+\bf{2} \textnormal{\em{Department of Molecular, Cellular \& Biomedical Sciences}} \\
+\bf{3} \textnormal{\em{Hubbard Center for Genome Studies}} \\
 
 
 \vspace{4mm}
@@ -34,7 +49,8 @@ Matthew D MacManes$^{1,2}$$^\ast$\\
 
 
 \begin{abstract}
-The widespread and rapid adoption of high-throughput sequencing technologies has changed the face of modern studies of evolutionary genetics. Indeed, newer sequencing technologies, like Illumina sequencing, have afforded researchers the opportunity to gain a deep understanding of genome level processes that underlie evolutionary change. In particular, researchers interested in functional biology and adaptation have used these technologies to sequence mRNA transcriptomes of specific tissues, which in turn are often compared to other tissues, or other individuals with different phenotypes.  While these techniques are extremely powerful, careful attention to data quality is required. In particular, because high-throughput sequencing is more error-prone than traditional Sanger sequencing, quality trimming of sequence reads should be an important step in all data processing pipelines.  While several software packages for quality trimming exist, no general guidelines for the specifics of trimming have been developed. Here, using both simulated and empirically derived sequence data, as well as several of the available read-trimmers, I provide general recommendations regarding the optimal strength of trimming, specifically in mRNA-Seq studies.  Although very aggressive quality trimming is common, this study suggests that a more gentle trimming, specifically of those nucleotides whose \textsc{Phred} score \textless 5, is superior.     
+\noindent
+The widespread and rapid adoption of high-throughput sequencing technologies has changed the face of modern studies of evolutionary genetics. Indeed, newer sequencing technologies, like Illumina sequencing, have afforded researchers the opportunity to gain a deep understanding of genome level processes that underlie evolutionary change. In particular, researchers interested in functional biology and adaptation have used these technologies to sequence mRNA transcriptomes of specific tissues, which in turn are often compared to other tissues, or other individuals with different phenotypes.  While these techniques are extremely powerful, careful attention to data quality is required. In particular, because high-throughput sequencing is more error-prone than traditional Sanger sequencing, quality trimming of sequence reads should be an important step in all data processing pipelines.  While several software packages for quality trimming exist, no general guidelines for the specifics of trimming have been developed. Here, using empirically derived sequence data, I provide general recommendations regarding the optimal strength of trimming, specifically in mRNA-Seq studies.  Although very aggressive quality trimming is common, this study suggests that a more gentle trimming, specifically of those nucleotides whose \textsc{Phred} score \textless 5 or \textless 10, is optimal for most studies across a wide variety of metrics.     
 \end{abstract}
 
 \doublespacing
@@ -43,53 +59,131 @@ The widespread and rapid adoption of high-throughput sequencing technologies has
 \vspace{12mm}
 
 \section*{Introduction}
-The popularity of genome--enabled biology has increased dramatically, particularly for researchers studying non-model organisms, over the last few years.  For many, the primary goal of these works is to better understand the genomic underpinnings of adaptive \citep{Linnen:2013ir,Narum:2013kc} or functional \citep{MunozMerida:2013dw,Hsu:2012dg} traits. While extremely promising, the study of functional genomics in non-model organisms typically requires the generation of a reference transcriptome to which comparisons are made.  Although compared to genome assembly \citep{Bradnam:2013uu,Earl:2011gt}. transcriptome assembly is less challenging, significant computational hurdles still exist. Amongst the most difficult of challenges involves the reconstruction of isoforms \citep{Pyrkosz:2013tm} and simultaneous assembly of transcripts where read coverage (=expression) varies by orders of magnitude.  \\
+The popularity of genome-enabled biology has increased dramatically, particularly for researchers studying non-model organisms, over the last few years.  For many, the primary goal of these works is to better understand the genomic underpinnings of adaptive \citep{Linnen:2013ir,Narum:2013kc} or functional \citep{MunozMerida:2013dw,Hsu:2012dg} traits. While extremely promising, the study of functional genomics in non-model organisms typically requires the generation of a reference transcriptome to which comparisons are made.  Although compared to genome assembly \citep{Bradnam:2013gxa,Earl:2011gt}. transcriptome assembly is less challenging, significant computational hurdles still exist. Amongst the most difficult of challenges involves the reconstruction of isoforms \citep{Pyrkosz:2013tm} and simultaneous assembly of transcripts where read coverage (=expression) varies by orders of magnitude.  \\
 
-\noindent
+\vspace{5mm}
+
 These processes are further complicated by the error-prone nature of high-throughput sequencing reads.  With regards to Illumina sequencing, error is distributed non-randomly over the length of the read, with the rate of error increasing from 5' to 3' end \citep{Liu:2012iv}. These errors are overwhelmingly substitution errors \citep{Yang:2013ck}, with the global error rate being between 1\% and 3\%. Although \textit{de Bruijn} graph assemblers do a remarkable job in distinguishing error from correct sequence, sequence error does results in assembly error.  While this type of error is problematic for all studies, it may be particularly troublesome for SNP-based population genetic studies. In addition to the biological concerns, sequencing read error may results in problems of a more technical importance. Because most transcriptome assemblers use a \textit{de Bruijn} graph representation of sequence connectedness, sequencing error can dramatically increase the size and complexity of the graph, and thus increase both RAM requirements and runtime.  \\
 
-\noindent
-In addition to sequence error correction, which has been shown to improved accuracy of the \textit{de novo} assembly \cite{MacManes:2013tva}, low quality (=high probability of error) nucleotides are commonly removed from the sequencing reads prior to assembly, using one of several available tools (\textsc{Trimmomatic} \citep{Lohse:2012fg}, \textsc{Fastx Toolkit} (\url{http://hannonlab.cshl.edu/fastx_toolkit/index.html}), \textsc{biopieces} (\url{http://www.biopieces.org/}), \textsc{SolexaQA} \citep{Cox:2010ch}). These tools typically use a sliding window approach,  discarding nucleotides falling below a given (user selected) average quality threshold.  The trimmed dataset that remains will undoubtedly contain error, though the absolute number will surely be decreased. \\
+\vspace{5mm}
 
-\noindent
+In addition to sequence error correction, which has been shown to improved accuracy of the \textit{de novo} assembly \cite{MacManes:2013tva}, low quality (=high probability of error) nucleotides are commonly removed from the sequencing reads prior to assembly, using one of several available tools (\textsc{Trimmomatic} \citep{Lohse:2012fg}, \textsc{Fastx Toolkit} (\url{http://hannonlab.cshl.edu/fastx_toolkit/index.html}), \textsc{biopieces} (\url{http://www.biopieces.org/}), \textsc{SolexaQA} \citep{Cox:2010ch}). These tools typically use a sliding window approach,  discarding nucleotides falling below a given (user selected) average quality threshold.  The trimmed sequencing read dataset that remains will undoubtedly contain error, though the absolute number will surely be decreased. \\
+
+\vspace{5mm}
 Although the process of nucleotide quality trimming is commonplace in HTS analysis pipelines, it's optimal implementation has not been well defined. Though the rigor with which trimming is performed may be guided by the design of the experiment, a deeper understanding of the effects of trimming is desirable. As transcriptome-based studies of functional genomics continue to become more popular, understanding how quality trimming of mRNA-seq reads used in these types of experiments is urgently needed. Researchers currently working in these field appear to favor aggressive trimming (e.g. \citep{Riesgo:2011do,Looso:2013eu}), but this may not be optimal. Indeed, one can easily image aggressive trimming resulting in the removal of a large amout of high quality data (Even nucleotides removed with the commonly used  \textsc{Phred}=20 threshold are accurate 99\% of the time), just as lackadaisical trimming (or no trimming) may result in nucleotide errors being incorporated into the assembled transcriptome.  \\
 
-\noindent
-Here, I attempt to provide recommendations regarding the efficient trimming of high-throughput sequence reads, specifically or mRNASeq reads from the Illumina platform. To do this, I used both simulated reads from the \textit{Mus musculus} transcriptome, as well as an empirically derived dataset.  These datasets were trimmed at various levels of stringency, assembled, then analyzed for assembly error. These results aim to guide researchers through this critical aspect of the analysis of high-throughput sequence data. While the results of this paper may not be applicable to all studies, that so many researchers are interested in the genomics of adaptation and phenotypic diversity suggests its widespread utility.  
+\vspace{5mm}
+Here, I attempt to provide recommendations regarding the efficient trimming of high-throughput sequence reads, specifically for mRNASeq reads from the Illumina platform. To do this, I used a publicly available dataset containing Illumina reads derived from \textit{Mus musculus}.  Subsets of these data (10 million, 20 million, 50 million, 75 million, 100 million reads) were randomly chosen, trimmed to various levels of stringency, assembled then analyzed for assembly error. and content These results aim to guide researchers through this critical aspect of the analysis of high-throughput sequence data. While the results of this paper may not be applicable to all studies, that so many researchers are interested in the genomics of adaptation and phenotypic diversity suggests its widespread utility.  
 
 \section*{Materials and Methods}
 \noindent
-Because I was interested in understanding the effects of sequence read quality trimming on the assembly of vertebrate transcriptome assembly, we elected to simulate thirty million 100nt paired-end Illumina reads with the program \textsc{Flux Simulator} \citep{Griebel:2012ti}.  This dataset is fully described in a previous publication \citep{MacManes:2013tva}. In addition to this simulated dataset, an empirically derived dataset consisting of 30 million 76nt paired-end mRNA Illumina reads, which is a subset of the well-characterized 50M read set continued within the \textsc{Trinity} software package. Quality metrics for the raw and quality trimmed reads were generated using the program \textsc{SolexaQA} \citep{Cox:2010ch}, and visualized using R \citep{RALanguageandEn:wf}. \\
+Because I was interested in understanding the effects of sequence read quality trimming on the assembly of vertebrate transcriptome assembly, I elected analyze a publicly available (SRR797058) paired-end Illumina read dataset.  This dataset is fully described in a previous publication \citep{Han:2014im}, and contains 232 million paired-end 100nt Illumina reads.  To investigate how sequencing depth influences the choice of trimming level, reads data were randomly subsetted into 10 million, 20 million, 50 million, 75 million, 100 million read datasets. \\
 
+\vspace{5mm}
+Read datasets were trimmed at varying quality thresholds using the software package \textsc{Trimmomatic} \citep{Lohse:2012fg}, which was selected as is appears to be amongst the most popular of read trimming tools. Specifically, sequences were trimmed at both 5' and 3' ends using \textsc{Phred} $\leq$ 2, $\leq$ 5, $\leq$ 10, and $\leq$ 20.  Transcriptome assemblies were generated for each dataset using the default settings of the program \textsc{Trinity} \citep{Haas:jq,Grabherr:2011jb}.  Code for running \textsc{Trinity} is available at \url{https://gist.github.com/macmanes/5859956}. Assemblies were evaluated using a variety of different metrics, many of them comparing assemblies to the complete collection of \textit{Mus} cDNA's, available at \url{http://useast.ensembl.org/info/data/ftp/index.html} \\
 
-\noindent
-Both simulated and empirical datasets were trimmed at varying quality thresholds using the software packages \textsc{Trimmomatic} \citep{Lohse:2012fg}. Specifically, sequences were trimmed at both 5' and 3' ends using \textsc{Phred} $\leq$ 0, $\leq$ 1, $\leq$ 5, $\leq$ 10, and $\leq$ 20. Though adapter trimming is included in the functionality the \textsc{Trimmomatic} packages, because the simulated dataset was produced sans adapter contamination-- for the purposes of comparison, the empirical dataset was cleansed of adapter before quality trimming. \\
+\vspace{5mm}
 
-\noindent
-Transcriptome assemblies were generated using the default settings of the program \textsc{Trinity} \citep{Haas:jq,Grabherr:2011jb}.  Code for running \textsc{Trinity} is available at \url{https://gist.github.com/macmanes/5859956}. Assemblies were evaluated using a variety of different metrics. First, \textsc{Blast+} \citep{Camacho:2009fc} was used to match assembled transcripts to their reference.  \textsc{TransDecoder} (\url{http://transdecoder.sourceforge.net/}) was used to identify full-length transcripts. The program \textsc{Blat} \citep{Kent:2002jd} was used to identify and count nucleotide mismatches between reconstructed transcripts and their corresponding reference.  Differences were visualized using the program R. \\
+Quality trimming may have substantial effect on assembly quality, and as such, I sought to identify high quality transcriptome assembles. Assemblies with few nucleotide errors relative to a known reference may indicate high quality. The program \textsc{Blat} \citep{Kent:2002jd} was used to identify and count nucleotide mismatches between reconstructed transcripts and their corresponding reference. To eliminate spurious short matches between query and template inflating estimates of error, only unique transcripts that covered more than 90\% of their reference sequence were used. Another potential assessment of assembly quality may be related to the number of paired-end sequencing reads that concordantly map to the assembly. As the number of reads concordantly mapping increased, so does assembly quality. To characterize this, I mapped raw untrimmed sequencing reads to each assembly using Bowtie2 \cite{Trapnell:2010kd}. \\
+
+\vspace{5mm}
+
+Aside from these metrics, measures of assembly content were also assayed. Here, open reading frames (ORFs) were identified using the program \textsc{TransDecoder} (\url{http://transdecoder.sourceforge.net/}), and were subsequently translated into amino acid sequences. The larger the number of complete open reading frames (containing both start and stop codons) the better the assembly. Lastly, unique transcripts were identified using the blastP program within \textsc{Blast+} \citep{Camacho:2009fc}. As the number of transcripts matching a given reference increases, so may assembly content.  \\
+
 
 \section*{Results}
 
+Quality trimming of sequence reads had a relatively small effect on the total number of errors contained in the final assembly (Figure 1), and this effect is largely a function of the size of the assembly, which was reduced by between 5 and 13\% when comparing the assemblies of untrimmed versus \textsc{Phred=20} trimmed sequence reads.  Indeed, after normalizing error by assembly size in nucleotides (Figure Y), trimming increased the error rate for low coverage (10M and 20M reads), and had negligible effect on higher coverage datasets. This result was extremely surprising. \\
+
+\vspace{5mm}
+\textbf{\hypertarget{Figure 1}{Figure 1}} \\
+\centerline{\includegraphics[width=20.0\baselineskip]{/Users/macmanes/Dropbox/trimming_paper/Fig1a.eps}}
+\begin{quote}
+Figure 1. The number of nucleotide errors contained in the final transcriptome assembly, normalized to assembly size, is not strongly related to the strength of quality trimming (Trimming of nucleotides whose error scores are: \textsc{Phred \textgreater 20, 10, 5, 2}, or no trimming  This patterns is largely unchanged with varying depth of sequencing coverage (10 million to 100 million sequencing reads). With higher coverage, trimming at \textsc{Phred = 5} may be optimal. 
+\end{quote}
+
+
+
+\vspace{5mm}
+
+In addition to looking at nucleotide errors, assembly quality may be measured by the the proportion of sequencing reads that map concordantly to a given transcriptome assembly \cite{Hunt:2013hj}. As such, the analysis of assembly quality included study of the mapping rates. Here, we found small but significant effects of trimming. Specifically, quality trimming at most levels decreased the proportion of reads that map concordantly to a given contig (Figure 2) in low coverage datasets, while when higher coverage, mapping rates was equivalent. The exception to these patters occurred with trimming at \textsc{Phred = 20}, which was universally linked to lower read mapping rates. 
+
+
+\vspace{5mm}
+\textbf{\hypertarget{Figure 2}{Figure 2}} \\
+\centerline{\includegraphics[width=20.0\baselineskip]{/Users/macmanes/Dropbox/trimming_paper/Fig2.eps}}
+\begin{quote}
+Figure 2. The number of concordantly mapping reads was reduced by trimming in low coverage datasets, while in higher coverage datasets where was no strong effect. The exception to this came with trimming at \textsc{Phred=20} was always associated with much poorer mapping rates. 
+\end{quote}
+
+
+\vspace{5mm}
+
+
+Analysis of assembly content painted a similar picture, with trimming having a relatively small, though tangible effect. The number of \textsc{BLAST+} matches was essentially unchanged when looking at untrimmed reads or reads trimmed at \textsc{Phred=2,5, or10} (Figure 3), though trimming at \textsc{Phred=20} was always the most poorly performing.  \\
+\vspace{5mm}
+
+
+\vspace{5mm}
+\textbf{\hypertarget{Figure 3}{Figure 3}} \\
+\centerline{\includegraphics[width=20.0\baselineskip]{/Users/macmanes/Dropbox/trimming_paper/Fig3.eps}}
+\begin{quote}
+Figure 3. The number of unique \textsc{Blast} matches contained in the final transcriptome assembly is not strongly related to the strength of quality trimming for any of the studies sequencing depths.  The 'no trimming' strategy always yielded the most number of unique matches, while trimming at \textsc{Phred=20} was always associated with much poorer assembly content
+\end{quote}
+
+
+When counting complete open reading frames, low and moderate coverage datasets (10M, 20M, 50M) were all worsened by all levels of trimming (Figure 4), the high overage datsets (75M and 100M) showed mild improvement at this metric at trimming at \textsc{Phred=5 or 10} levels. Trimming at \textsc{Phred=20} was the most poorly performing level at all read depths. \\
+
+\vspace{5mm}
+\textbf{\hypertarget{Figure 4}{Figure 4}} \\
+\centerline{\includegraphics[width=20.0\baselineskip]{/Users/macmanes/Dropbox/trimming_paper/Fig4.eps}}
+\begin{quote}
+Figure 4. The number of complete exons contained in the final transcriptome assembly is not strongly related to the strength of quality trimming for any of the studies sequencing depths, though trimming at \textsc{Phred=20} was always associated with fewer identified exons. 
+\end{quote}
+
+
+\vspace{5mm}
+
+
+
+
 \section*{Discussion}
+
+Although the process of nucleotide quality trimming is commonplace in HTS analysis pipelines, it's optimal implementation has not been well defined. Though the rigor with which trimming is performed seems to vary, there seems to be a bias towards stringent trimming \citep{Barrett:2012ju,Tao:2013hv,Straub:2013jw,Ansell:2013ec}. This study provides strong evidence that stringent quality trimming of nucleotides whose quality scores are $\geq$ 20 results in a poorer transcriptome assembly across all metrics. Instead, researchers interested in assembling transcriptomes \textit{de novo} should elect for a much more gentle quality trimming, or no trimming at all, particularly when fewer than 20 million reads are generated. \\
+
+\vspace{5mm}
+
+
+The results of this study were surprising. In fact, much of my own work assembling transcriptomes included a vigorous trimming step. That trimming had such small effects, and even negative effects when trimming at \textsc{Phred=20} was unexpected. To understand if trimming changes the distribution of quality scores along the read, we generated plots with the program SolexaQA \citep{Cox:2010ch}. Indeed, the program modifies the distribution of \textsc{Phred} in the predicted fashion (Figure 5) yet downstream effects are minimal.  \\
+
+\vspace{5mm}
+
+Why does quality trimming have such small effect, and even a negative effect at \textsc{Phred=20}? 
+
+\vspace{5mm}
+
+\textsc{Effects of read depth} --- Though the experiment was not designed to evaluate the effects of sequencing depth on assembly, the data speak well to this issue. Contrary to other studies, suggesting that 30 million paired end reads were sufficient to cover eukaryote transcriptomes \citep{Francis:2013gc}, the results of the current study suggest that assembly content was more complete as sequencing depth increased; a pattern that holds at all trimming levels. Though the suggested 30 million read depth was not included in this study, all metrics, including the number of assembly errors was dramatically reduced, and the number of exons, and \textsc{BLAST} hits were increased as read depth increased. While generating more sequence data is expensive, given the assembled transcriptome reference often forms the core of future studies, this investment may be warranted. \\
+
+\vspace{5mm}
 
 \section*{Acknowledgments}
 
 
 \singlespacing
-\bibliographystyle{model2-names.bst}
+\bibliographystyle{unsrt.bst}
 \bibliography{formatted.bib}
 
 \section*{Figures \& Tables}
 
-\textbf{\hypertarget{Figure 1}{Figure 1}} \\
-\centerline{\includegraphics[width=40.0\baselineskip]{Figure1a.eps}}
+%\textbf{\hypertarget{Figure 1}{Figure 1}} \\
+%\centerline{\includegraphics[width=40.0\baselineskip]{Figure1a.eps}}
 
 
 \noindent
 Fig. 1
 
-\textbf{\hypertarget{Figure 2}{Figure 2}} \\
-\centerline{\includegraphics[width=40.0\baselineskip]{Figure2.eps}}
+%\textbf{\hypertarget{Figure 2}{Figure 2}} \\
+%\centerline{\includegraphics[width=40.0\baselineskip]{Figure2.eps}}
 
 \noindent
 Fig. 2 

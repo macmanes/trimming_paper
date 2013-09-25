@@ -1,0 +1,183 @@
+\begin{thebibliography}{10}
+
+\bibitem{Linnen:2013ir}
+C~R Linnen, Y~P Poh, B~K Peterson, R~D~H Barrett, J~G Larson, J~D Jensen, and
+  H~E Hoekstra.
+\newblock {Adaptive Evolution of Multiple Traits Through Multiple Mutations at
+  a Single Gene}.
+\newblock {\em Science (New York, NY)}, 339(6125):1312--1316, March 2013.
+
+\bibitem{Narum:2013kc}
+Shawn~R Narum, Nathan~R Campbell, Kevin~A Meyer, Michael~R Miller, and Ronald~W
+  Hardy.
+\newblock {Thermal adaptation and acclimation of ectotherms from differing
+  aquatic climates.}
+\newblock {\em Molecular Ecology}, pages 1--8, March 2013.
+
+\bibitem{MunozMerida:2013dw}
+A~Mu~noz Merida, J~J Gonzalez-Plaza, A~Canada, A~M Blanco, M~d~C Garcia-Lopez,
+  J~M Rodriguez, L~Pedrola, M~D Sicardo, M~L Hernandez, R~De~la Rosa, A~Belaj,
+  M~Gil-Borja, F~Luque, J~M Martinez-Rivas, D~G Pisano, O~Trelles, V~Valpuesta,
+  and C~R Beuzon.
+\newblock {De Novo Assembly and Functional Annotation of the Olive
+  (\textit{Olea europaea}) Transcriptome}.
+\newblock {\em DNA Research}, 20(1):93--108, February 2013.
+
+\bibitem{Hsu:2012dg}
+Ju-Chun Hsu, Ting-Ying Chien, Chia-Cheng Hu, Mei-Ju~May Chen, Wen-Jer Wu,
+  Hai-Tung Feng, David~S Haymer, and Chien-Yu Chen.
+\newblock {Discovery of Genes Related to Insecticide Resistance in
+  \emph{Bactrocera dorsalis} by Functional Genomic Analysis of a \emph{De Novo}
+  Assembled Transcriptome}.
+\newblock {\em PLOS ONE}, 7(8):e40950, August 2012.
+
+\bibitem{Bradnam:2013gxa}
+Keith~R Bradnam, Joseph~N Fass, Anton Alexandrov, Paul Baranay, Michael
+  Bechner, Inan Birol, S~bastien Boisvert, Jarrod~A Chapman, Guillaume Chapuis,
+  Rayan Chikhi, Hamidreza Chitsaz, Wen-Chi Chou, Jacques Corbeil, Cristian
+  Del~Fabbro, T~Roderick Docking, Richard Durbin, Dent Earl, Scott Emrich,
+  Pavel Fedotov, Nuno~A Fonseca, Ganeshkumar Ganapathy, Richard~A Gibbs, Sante
+  Gnerre, l~nie Godzaridis, Steve Goldstein, Matthias Haimel, Giles Hall, David
+  Haussler, Joseph~B Hiatt, Isaac~Y Ho, Jason Howard, Martin Hunt, Shaun~D
+  Jackman, David~B Jaffe, Erich~D Jarvis, Huaiyang Jiang, Sergey Kazakov,
+  Paul~J Kersey, Jacob~O Kitzman, James~R Knight, Sergey Koren, Tak-Wah Lam,
+  Dominique Lavenier, Fran~ois Laviolette, Yingrui Li, Zhenyu Li, Binghang Liu,
+  Yue Liu, Ruibang Luo, Iain MacCallum, Matthew~D MacManes, Nicolas Maillet,
+  Sergey Melnikov, Delphine Naquin, Zemin Ning, Thomas~D Otto, Benedict Paten,
+  Oct vio~S Paulo, Adam~M Phillippy, Francisco Pina-Martins, Michael Place,
+  Dariusz Przybylski, Xiang Qin, Carson Qu, Filipe~J Ribeiro, Stephen Richards,
+  Daniel~S Rokhsar, J~Graham Ruby, Simone Scalabrin, Michael~C Schatz, David~C
+  Schwartz, Alexey Sergushichev, Ted Sharpe, Timothy~I Shaw, Jay Shendure,
+  Yujian Shi, Jared~T Simpson, Henry Song, Fedor Tsarev, Francesco Vezzi,
+  Riccardo Vicedomini, Bruno~M Vieira, Jun Wang, Kim~C Worley, Shuangye Yin,
+  Siu-Ming Yiu, Jianying Yuan, Guojie Zhang, Hao Zhang, Shiguo Zhou, and Ian~F
+  Korf.
+\newblock {Assemblathon 2: evaluating \textit{de novo} methods of genome
+  assembly in three vertebrate species}.
+\newblock 2(1):1--1, July 2013.
+
+\bibitem{Earl:2011gt}
+D~Earl, K~Bradnam, J~St~John, A~Darling, D~Lin, J~Fass, H~O~K Yu, V~Buffalo,
+  D~R Zerbino, M~Diekhans, N~Nguyen, P~N Ariyaratne, W~K Sung, Z~Ning,
+  M~Haimel, J~T Simpson, N~A Fonseca, I~Birol, T~R Docking, I~Y Ho, D~S
+  Rokhsar, R~Chikhi, D~Lavenier, G~Chapuis, D~Naquin, N~Maillet, M~C Schatz,
+  D~R Kelley, A~M Phillippy, S~Koren, S~P Yang, W~Wu, W~C Chou, A~Srivastava,
+  T~I Shaw, J~G Ruby, P~Skewes-Cox, M~Betegon, M~T Dimon, V~Solovyev,
+  I~Seledtsov, P~Kosarev, D~Vorobyev, R~Ramirez-Gonzalez, R~Leggett, D~MacLean,
+  F~Xia, R~Luo, Z~Li, Y~Xie, B~Liu, S~Gnerre, I~Maccallum, D~Przybylski, F~J
+  Ribeiro, S~Yin, T~Sharpe, G~Hall, P~J Kersey, R~Durbin, S~D Jackman, J~A
+  Chapman, X~Huang, J~L DeRisi, M~Caccamo, Y~Li, D~B Jaffe, R~E Green,
+  D~Haussler, I~Korf, and B~Paten.
+\newblock {Assemblathon 1: A competitive assessment of \textit{de novo} short
+  read assembly methods}.
+\newblock {\em Genome Research}, 21(12):2224--2241, December 2011.
+
+\bibitem{Pyrkosz:2013tm}
+Alexis~Black Pyrkosz, Hans Cheng, and C~Titus Brown.
+\newblock {RNA-Seq Mapping Errors When Using Incomplete Reference
+  Transcriptomes of Vertebrates}.
+\newblock {\em \url{http://arxiv.org/abs/1303.2411v1}}, March 2013.
+
+\bibitem{Liu:2012iv}
+B~Liu, J~Yuan, S~M Yiu, Z~Li, Y~Xie, Y~Chen, Y~Shi, H~Zhang, Y~Li, T~W Lam, and
+  R~Luo.
+\newblock {COPE: an accurate k-mer-based pair-end reads connection tool to
+  facilitate genome assembly}.
+\newblock {\em Bioinformatics (Oxford, England)}, 28(22):2870--2874, November
+  2012.
+
+\bibitem{Yang:2013ck}
+X~Yang, S~P Chockalingam, and S~Aluru.
+\newblock {A survey of error-correction methods for next-generation
+  sequencing}.
+\newblock {\em Briefings In Bioinformatics}, 14(1):56--66, January 2013.
+
+\bibitem{MacManes:2013tva}
+Matthew~D MacManes and Michael~B Eisen.
+\newblock {Improving transcriptome assembly through error correction of
+  high-throughput sequence reads}.
+\newblock {\em arXiv.org}, April 2013.
+
+\bibitem{Lohse:2012fg}
+M~Lohse, A~M Bolger, A~Nagel, A~R Fernie, J~E Lunn, M~Stitt, and B~Usadel.
+\newblock {RobiNA: a user-friendly, integrated software solution for
+  RNA-Seq-based transcriptomics}.
+\newblock {\em Nucleic Acids Research}, 40(W1):W622--W627, June 2012.
+
+\bibitem{Cox:2010ch}
+Murray~P Cox, Daniel~A Peterson, and Patrick~J Biggs.
+\newblock {SolexaQA: At-a-glance quality assessment of Illumina
+  second-generation sequencing data}.
+\newblock {\em BMC Bioinformatics}, 11:485, 2010.
+
+\bibitem{Riesgo:2011do}
+Ana Riesgo, Alicia~R Perez-Porro, Susana Carmona, Sally~P Leys, and Gonzalo
+  Giribet.
+\newblock {Optimization of preservation and storage time of sponge tissues to
+  obtain quality mRNA for next-generation sequencing.}
+\newblock {\em Molecular Ecology Resources}, 12(2):312--322, March 2012.
+
+\bibitem{Looso:2013eu}
+Mario Looso, Jens Preussner, Konstantinos Sousounis, Marc Bruckskotten,
+  Christian~S Michel, Ettore Lignelli, Richard Reinhardt, Sabrina Hoeffner,
+  Marcus Krueger, Panagiotis~A Tsonis, Thilo Borchardt, and Thomas Braun.
+\newblock {A \textit{de novo} assembly of the newt transcriptome combined with
+  proteomic validation identifies new protein families expressed during tissue
+  regeneration}.
+\newblock {\em Genome Biology}, 14(2):R16, 2013.
+
+\bibitem{Han:2014im}
+Hong Han, Manuel Irimia, P~Joel Ross, Hoon-Ki Sung, Babak Alipanahi, Laurent
+  David, Azadeh Golipour, Mathieu Gabut, Iacovos~P Michael, Emil~N Nachman,
+  Eric Wang, Dan Trcka, Tadeo Thompson, Dave O'Hanlon, Valentina Slobodeniuc,
+  Nuno~L Barbosa-Morais, Christopher~B Burge, Jason Moffat, Brendan~J Frey,
+  andras Nagy, James Ellis, Jeffrey~L Wrana, and Benjamin~J Blencowe.
+\newblock {MBNL proteins repress ES-cell-specific alternative splicing and
+  reprogramming}.
+\newblock {\em Nature}, 498(7453):241--245, April 2014.
+
+\bibitem{Haas:jq}
+Brian~J Haas, Alexie Papanicolaou, Moran Yassour, Manfred Grabherr, Phillip
+  Blood, Joshua Bowden, Matthew Couger, David Eccles, Bo~Li, Matthias Lieber,
+  Matthew~D MacManes, Michael Ott, Joshua Orvis, Nathalie Pochet, Francisco
+  Strozzi, Nathan Weeks, Rick Westerman, Thomas William, Colin~N Dewey, Robert
+  Henschel, Richard~G LeDuc, Nir Friedman, and Aviv Regev.
+\newblock {\emph{\textit{De novo}} transcript sequence reconstruction from
+  RNA-seq using the Trinity platform for reference generation and analysis}.
+\newblock {\em Nature protocols}, pages 1494--1512, 2013.
+
+\bibitem{Grabherr:2011jb}
+Manfred~G Grabherr, Brian~J Haas, Moran Yassour, Joshua~Z Levin, Dawn~A
+  Thompson, Ido Amit, Xian Adiconis, Lin Fan, Raktima Raychowdhury, Qiandong
+  Zeng, Z~Chen, Evan Mauceli, Nir Hacohen, andreas Gnirke, Nicholas Rhind,
+  Federica di~Palma, Bruce~W Birren, Chad Nusbaum, Kerstin Lindblad-Toh, Nir
+  Friedman, and Aviv Regev.
+\newblock {Full-length transcriptome assembly from RNA-Seq data without a
+  reference genome.}
+\newblock {\em Nature Biotechnology}, 29(7):644--652, July 2011.
+
+\bibitem{Kent:2002jd}
+W~J Kent.
+\newblock {BLAT---The BLAST-Like Alignment Tool}.
+\newblock {\em Genome Research}, 12(4):656--664, March 2002.
+
+\bibitem{Trapnell:2010kd}
+Cole Trapnell, Brian~A Williams, Geo Pertea, Ali Mortazavi, Gordon Kwan,
+  Marijke~J van Baren, Steven~L Salzberg, Barbara~J Wold, and Lior Pachter.
+\newblock {Transcript assembly and quantification by RNA-Seq reveals
+  unannotated transcripts and isoform switching during cell differentiation}.
+\newblock {\em Nature Biotechnology}, 28(5):511--U174, 2010.
+
+\bibitem{Camacho:2009fc}
+Christiam Camacho, George Coulouris, Vahram Avagyan, Ning Ma, Jason
+  Papadopoulos, Kevin Bealer, and Thomas~L Madden.
+\newblock {BLAST+: architecture and applications}.
+\newblock {\em BMC Bioinformatics}, 10:421, 2009.
+
+\bibitem{Hunt:2013hj}
+Martin Hunt, Taisei Kikuchi, Mandy Sanders, Chris Newbold, Matthew Berriman,
+  and Thomas~D Otto.
+\newblock {REAPR: a universal tool for genome assembly evaluation.}
+\newblock {\em Genome Biology}, 14(5):R47, May 2013.
+
+\end{thebibliography}

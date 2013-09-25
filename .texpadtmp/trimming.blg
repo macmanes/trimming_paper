@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: trimming.aux
+The style file: unsrt.bst.bst
+Database file #1: formatted.bib.bib
+I was expecting a `,' or a `}'---line 16905 of file formatted.bib.bib
+ : 
+ : @article{THORNHILL:1983vi,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 35865 of file formatted.bib.bib
+ : 
+ : @article{Gibbons:2009fh,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty journal in Bradnam:2013gxa
+You've used 21 entries,
+            1791 wiz_defined-function locations,
+            590 strings with 12505 characters,
+and the built_in function-call counts, 8658 in all, are:
+= -- 462
+> -- 1049
+< -- 2
++ -- 357
+- -- 336
+* -- 978
+:= -- 1638
+add.period$ -- 63
+call.type$ -- 21
+change.case$ -- 21
+chr.to.int$ -- 0
+cite$ -- 22
+duplicate$ -- 203
+empty$ -- 475
+format.name$ -- 336
+if$ -- 1644
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 21
+newline$ -- 108
+num.names$ -- 21
+pop$ -- 31
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 84
+stack$ -- 0
+substring$ -- 416
+swap$ -- 36
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 56
+width$ -- 23
+write$ -- 230
+(There were 2 error messages)
