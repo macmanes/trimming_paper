@@ -194,15 +194,20 @@ raw.100M.$(READ1) raw.100M.$(READ2) : $(READ1) $(READ2)
 	--left raw.100M.$(READ1) --right raw.100M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.100M; rm raw.100M.$(READ1) raw.100M.$(READ2)
 
 pslx: 
-	for i in `ls *Trinity.fasta`; do $(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query $$i; rm *maps *selected *summary; done
+#	for i in `ls *Trinity.fasta`; do $(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query $$i; rm *maps *selected *summary; done
+	for i in `ls raw.50M.Trinity.fasta`; do $(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query $$i; rm *maps *selected *summary; done
+	for i in `ls 75M.20.Trinity.fasta`; do $(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query $$i; rm *maps *selected *summary; done
+	for i in `ls raw.75M.Trinity.fasta`; do $(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query $$i; rm *maps *selected *summary; done
+	for i in `ls 100M.20.Trinity.fasta`; do $(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query $$i; rm *maps *selected *summary; done
+	for i in `ls raw.100M.Trinity.fasta`; do $(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query $$i; rm *maps *selected *summary; done
 
 10M.2.Trinity.fasta.pep 10M.5.Trinity.fasta.pep 10M.10.Trinity.fasta.pep 10M.20.Trinity.fasta.pep 20M.2.Trinity.fasta.pep 20M.5.Trinity.fasta.pep 20M.10.Trinity.fasta.pep 20M.20.Trinity.fasta.pep 50M.2.Trinity.fasta.pep 50M.5.Trinity.fasta.pep 10M.50.Trinity.fasta.pep 50M.20.Trinity.fasta.pep 75M.2.Trinity.fasta.pep 75M.5.Trinity.fasta.pep 75M.10.Trinity.fasta.pep 75M.20.Trinity.fasta.pep 100M.2.Trinity.fasta.pep 100M.5.Trinity.fasta.pep 100M.10.Trinity.fasta.pep 100M.20.Trinity.fasta.pep: 
-	for i in `ls *Trinity.fasta`; do $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t $$i --search_pfam /media/macmanes/hd2/pfam/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $$i.pep; done
-
-
-
-
-
+#	for i in `ls *Trinity.fasta`; do $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t $$i --search_pfam /media/macmanes/hd2/pfam/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $$i.pep; done
+	for i in `ls raw.50M.Trinity.fasta`; do $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t $$i --search_pfam /media/macmanes/hd2/pfam/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $$i.pep; done
+	for i in `ls 75M.20.Trinity.fasta`; do $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t $$i --search_pfam /media/macmanes/hd2/pfam/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $$i.pep; done
+	for i in `ls raw.75M.Trinity.fasta`; do $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t $$i --search_pfam /media/macmanes/hd2/pfam/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $$i.pep; done
+	for i in `ls 100M.20.Trinity.fasta`; do $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t $$i --search_pfam /media/macmanes/hd2/pfam/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $$i.pep; done
+	for i in `ls raw.100M.Trinity.fasta`; do $(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t $$i --search_pfam /media/macmanes/hd2/pfam/Pfam-A.hmm; rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep $$i.pep; done
 
 
 
