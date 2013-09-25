@@ -130,9 +130,9 @@ raw.50M.$(READ1) raw.50M.$(READ2): $(READ1) $(READ2)
 
 50M.2.Trinity.fasta 50M.5.Trinity.fasta 50M.10.Trinity.fasta 50M.20.Trinity.fasta raw.50M.Trinity.fasta: 50M.left.2.fq 50M.left.5.fq 50M.left.10.fq 50M.left.20.fq 50M.right.2.fq 50M.right.5.fq 50M.right.10.fq 50M.right.20.fq
 	for TRIM in 2 5 10 20; do \
-		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
+		$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 1 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
 		--left 50M.left.$$TRIM.fq --right 50M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 50M.$$TRIM; rm 50M.left.$$TRIM.fq 50M.right.$$TRIM.fq; done
-	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 2 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
+	$(TRINITY)/Trinity.pl --full_cleanup --min_kmer_cov 1 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G  \
 	--left raw.50M.$(READ1) --right raw.50M.$(READ2) --group_pairs_distance 999 --CPU $(CPU) --output raw.50M; rm raw.50M.$(READ1) raw.50M.$(READ2)
 
 raw.75M.$(READ1) raw.75M.$(READ2) : $(READ1) $(READ2)
