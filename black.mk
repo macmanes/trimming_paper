@@ -12,10 +12,78 @@ TRINITY := /usr/local/packages/trinity/r2013-08-14/
 MUS := /brashear/macmanes/runs/trim/Mus_musculus.GRCm38.71.cdna.all.fa
 PFAM := /brashear/macmanes/runs/trim/pfam/Pfam-A.hmm
 
-
+raw.10M.$(READ1) raw.10M.$(READ2): 
+	python ~/error_correction/scripts/subsampler.py 10000000 $(READ1) $(READ2)
+	mv subsamp_1.fastq raw.10M.$(READ1)
+	mv subsamp_2.fastq raw.10M.$(READ2)	
+trim10:
+	@echo About to start trimming
+	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+	-phred33 -threads $(CPU) \
+	../raw.10M.$(READ1) \
+	../raw.10M.$(READ2) \
+	10M.$$TRIM.pp.1.fq \
+	10M.$$TRIM.up.1.fq \
+	10M.$$TRIM.pp.2.fq \
+	10M.$$TRIM.up.2.fq \
+	ILLUMINACLIP:$(BCODES):2:40:15 \
+	LEADING:$$TRIM \
+	TRAILING:$$TRIM \
+	SLIDINGWINDOW:4:$$TRIM \
+	MINLEN:25 2>> trim10.log; \
+	cat 10M.$$TRIM.pp.1.fq 10M.$$TRIM.up.1.fq > 10M.left.$$TRIM.fq ; \
+	cat 10M.$$TRIM.pp.2.fq 10M.$$TRIM.up.2.fq > 10M.right.$$TRIM.fq ; \
+	rm 10M.$$TRIM.pp.2.fq 10M.$$TRIM.up.2.fq 10M.$$TRIM.pp.1.fq 10M.$$TRIM.up.1.fq
+trin10:
+	$(TRINITY)/Trinity.pl --bflyGCThread 25 --full_cleanup --min_kmer_cov 1 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G \
+	--left 10M.left.$$TRIM.fq --right 10M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 10M.$$TRIM >> 10trin$$TRIM.out
+pslx10:
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query 10M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
+pep10:
+	$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 10M.$$TRIM.Trinity.fasta \
+	--search_pfam $(PFAM) >>pfam10.log; \
+	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 10M.$$TRIM.Trinity.fasta.pep
 map10:
 	bowtie2-build -q 10M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 10M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | express -o 10.$$TRIM.xprs -p8 10M.$$TRIM.Trinity.fasta 2>>10M.$$TRIM.mapping.log; rm index*
+	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | express -o 10M.$$TRIM.xprs -p8 10M.$$TRIM.Trinity.fasta 2>>10M.$$TRIM.mapping.log; rm index*
+
+raw.20M.$(READ1) raw.20M.$(READ2): 
+	python ~/error_correction/scripts/subsampler.py 20000000 $(READ1) $(READ2)
+	mv subsamp_1.fastq raw.20M.$(READ1)
+	mv subsamp_2.fastq raw.20M.$(READ2)	
+trim20:
+	@echo About to start trimming
+	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+	-phred33 -threads $(CPU) \
+	../raw.20M.$(READ1) \
+	../raw.20M.$(READ2) \
+	20M.$$TRIM.pp.1.fq \
+	20M.$$TRIM.up.1.fq \
+	20M.$$TRIM.pp.2.fq \
+	20M.$$TRIM.up.2.fq \
+	ILLUMINACLIP:$(BCODES):2:40:15 \
+	LEADING:$$TRIM \
+	TRAILING:$$TRIM \
+	SLIDINGWINDOW:4:$$TRIM \
+	MINLEN:25 2>> trim20.log; \
+	cat 20M.$$TRIM.pp.1.fq 20M.$$TRIM.up.1.fq > 20M.left.$$TRIM.fq ; \
+	cat 20M.$$TRIM.pp.2.fq 20M.$$TRIM.up.2.fq > 20M.right.$$TRIM.fq ; \
+	rm 20M.$$TRIM.pp.2.fq 20M.$$TRIM.up.2.fq 20M.$$TRIM.pp.1.fq 20M.$$TRIM.up.1.fq
+trin20:
+	$(TRINITY)/Trinity.pl --bflyGCThread 25 --full_cleanup --min_kmer_cov 1 --seqType fq --JM $(MEM)G --bflyHeapSpaceMax $(MEM)G \
+	--left 20M.left.$$TRIM.fq --right 20M.right.$$TRIM.fq --group_pairs_distance 999 --CPU $(CPU) --output 20M.$$TRIM >> 20trin$$TRIM.out
+pslx20:
+	$(TRINITY)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target $(MUS) --query 20M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
+pep20:
+	$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 20M.$$TRIM.Trinity.fasta \
+	--search_pfam $(PFAM) >>pfam20.log; \
+	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 20M.$$TRIM.Trinity.fasta.pep
+map20:
+	bowtie2-build -q 20M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 20M.$$TRIM.mapping.log; \
+	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>20M.$$TRIM.mapping.log | express -o 20M.$$TRIM.xprs -p8 20M.$$TRIM.Trinity.fasta 2>>20M.$$TRIM.mapping.log; rm index*
+
+
+
 raw.50M.$(READ1) raw.50M.$(READ2): 
 	python ~/error_correction/scripts/subsampler.py 50000000 $(READ1) $(READ2)
 	mv subsamp_1.fastq raw.50M.$(READ1)
