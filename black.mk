@@ -1,5 +1,7 @@
 #!/usr/bin/make -rRsf
 
+#USAGE:
+
 MEM=5
 TRIM=5
 CPU=5
