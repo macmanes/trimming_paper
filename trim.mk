@@ -91,7 +91,7 @@ raw.10M.$(READ1) raw.10M.$(READ2):
 		$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 10M.$$TRIM.Trinity.fasta \
 		--search_pfam $(PFAM); \
 		rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 10M.$$TRIM.Trinity.fasta.pep; \
-		bowtie2-build -q 10M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$trim '\n' >> 10M.$$TRIM.mapping.log; \
+		bowtie2-build -q 10M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$trim '\n' >> 10M.$$TRIM.mapping.log; \
 		bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | express -o 10.$$TRIM.xprs -p8 10M.$$TRIM.Trinity.fasta ; rm index* ; done
 
 
@@ -129,7 +129,7 @@ raw.20M.$(READ1) raw.20M.$(READ2):
 		$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 20M.$$TRIM.Trinity.fasta \
 		--search_pfam $(PFAM); \
 		rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 20M.$$TRIM.Trinity.fasta.pep; \
-		bowtie2-build -q 20M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$trim '\n' >> 20M.$$TRIM.mapping.log; \
+		bowtie2-build -q 20M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$trim '\n' >> 20M.$$TRIM.mapping.log; \
 		bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>20M.$$TRIM.mapping.log | express -o 20.$$TRIM.xprs -p8 20M.$$TRIM.Trinity.fasta ; rm index* ; done
 
 
@@ -170,7 +170,7 @@ raw.50M.$(READ1) raw.50M.$(READ2):
 		$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 50M.$$TRIM.Trinity.fasta \
 		--search_pfam $(PFAM); \
 		rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 50M.$$TRIM.Trinity.fasta.pep; \
-		bowtie2-build -q 50M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$trim '\n' >> 50M.$$TRIM.mapping.log; \
+		bowtie2-build -q 50M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$trim '\n' >> 50M.$$TRIM.mapping.log; \
 		bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>50M.$$TRIM.mapping.log | express -o 50.$$TRIM.xprs -p8 50M.$$TRIM.Trinity.fasta ; rm index* ; done
 
 raw.75M.$(READ1) raw.75M.$(READ2): 
@@ -207,7 +207,7 @@ raw.75M.$(READ1) raw.75M.$(READ2):
 		$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 75M.$$TRIM.Trinity.fasta \
 		--search_pfam $(PFAM); \
 		rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 75M.$$TRIM.Trinity.fasta.pep; \
-		bowtie2-build -q 75M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$trim '\n' >> 75M.$$TRIM.mapping.log; \
+		bowtie2-build -q 75M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$trim '\n' >> 75M.$$TRIM.mapping.log; \
 		bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>75M.$$TRIM.mapping.log | express -o 75.$$TRIM.xprs -p8 75M.$$TRIM.Trinity.fasta ; rm index* ; done
 
 
@@ -245,6 +245,6 @@ raw.100M.$(READ1) raw.100M.$(READ2):
 		$(TRINITY)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 100M.$$TRIM.Trinity.fasta \
 		--search_pfam $(PFAM); \
 		rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 100M.$$TRIM.Trinity.fasta.pep; \
-		bowtie2-build -q 100M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$trim '\n' >> 100M.$$TRIM.mapping.log; \
+		bowtie2-build -q 100M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$trim '\n' >> 100M.$$TRIM.mapping.log; \
 		bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>100M.$$TRIM.mapping.log | express -o 100.$$TRIM.xprs -p8 100M.$$TRIM.Trinity.fasta ; rm index* ; done
 
