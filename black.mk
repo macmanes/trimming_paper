@@ -10,17 +10,22 @@ READ1=left.fastq
 READ2=right.fastq
 TRIMMOMATIC ?= $(shell which 'trimmomatic-0.30.jar')
 BCODES := /usr/users/1/macmanes/software/barcodes.fa
-TRINITY := /usr/local/packages/trinity/r2013-08-14/
 MUS := /brashear/macmanes/runs/trim/Mus_musculus.GRCm38.71.cdna.all.fa
 PFAM := /brashear/macmanes/runs/trim/pfam/Pfam-A.hmm
 
-raw.10M.$(READ1) raw.10M.$(READ2): 
-	python ~/error_correction/scripts/subsampler.py 10000000 $(READ1) $(READ2)
+
+TRINITY ?= $(shell which 'Trinity.pl')
+MAKEDIR := $(dir $(firstword $(MAKEFILE_LIST)))
+
+
+
+subsamp10: 
+	python {MAKEDIR}/subsampler.py 10000000 $(READ1) $(READ2)
 	mv subsamp_1.fastq raw.10M.$(READ1)
 	mv subsamp_2.fastq raw.10M.$(READ2)	
 trim10:
 	@echo About to start trimming
-	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
 	../raw.10M.$(READ1) \
 	../raw.10M.$(READ2) \
@@ -47,7 +52,7 @@ pep10:
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 10M.$$TRIM.Trinity.fasta.pep
 map10:
 	bowtie2-build -q 10M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 10M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | express -o 10M.$$TRIM.xprs -p8 10M.$$TRIM.Trinity.fasta 2>>10M.$$TRIM.mapping.log; rm index*
+	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 10M.$$TRIM.xprs -p8 10M.$$TRIM.Trinity.fasta 2>>10M.$$TRIM.mapping.log; rm index*
 
 raw.20M.$(READ1) raw.20M.$(READ2): 
 	python ~/error_correction/scripts/subsampler.py 20000000 $(READ1) $(READ2)
@@ -55,7 +60,7 @@ raw.20M.$(READ1) raw.20M.$(READ2):
 	mv subsamp_2.fastq raw.20M.$(READ2)	
 trim20:
 	@echo About to start trimming
-	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
 	../raw.20M.$(READ1) \
 	../raw.20M.$(READ2) \
@@ -82,7 +87,7 @@ pep20:
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 20M.$$TRIM.Trinity.fasta.pep
 map20:
 	bowtie2-build -q 20M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 20M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>20M.$$TRIM.mapping.log | express -o 20M.$$TRIM.xprs -p8 20M.$$TRIM.Trinity.fasta 2>>20M.$$TRIM.mapping.log; rm index*
+	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>20M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 20M.$$TRIM.xprs -p8 20M.$$TRIM.Trinity.fasta 2>>20M.$$TRIM.mapping.log; rm index*
 
 raw.50M.$(READ1) raw.50M.$(READ2): 
 	python ~/error_correction/scripts/subsampler.py 50000000 $(READ1) $(READ2)
@@ -90,7 +95,7 @@ raw.50M.$(READ1) raw.50M.$(READ2):
 	mv subsamp_2.fastq raw.50M.$(READ2)	
 trim50:
 	@echo About to start trimming
-	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
 	../raw.50M.$(READ1) \
 	../raw.50M.$(READ2) \
@@ -117,7 +122,7 @@ pep50:
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 50M.$$TRIM.Trinity.fasta.pep
 map50:
 	bowtie2-build -q 50M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 50M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>50M.$$TRIM.mapping.log | express -o 50.$$TRIM.xprs -p8 50M.$$TRIM.Trinity.fasta 2>>50M.$$TRIM.mapping.log; rm index*
+	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>50M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 50.$$TRIM.xprs -p8 50M.$$TRIM.Trinity.fasta 2>>50M.$$TRIM.mapping.log; rm index*
 
 raw.75M.$(READ1) raw.75M.$(READ2): 
 	python ~/error_correction/scripts/subsampler.py 75000000 $(READ1) $(READ2)
@@ -127,7 +132,7 @@ trim75:
 	@echo About to start trimming
 	mkdir $$TRIM.trim75
 	cd $$TRIM.trim75
-	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
 	../raw.75M.$(READ1) \
 	../raw.75M.$(READ2) \
@@ -154,7 +159,7 @@ pep75:
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 75M.$$TRIM.Trinity.fasta.pep
 map75:
 	bowtie2-build -q 75M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 75M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 ../$(READ1) -2 ../$(READ2) 2>>75M.$$TRIM.mapping.log | express -o 75.$$TRIM.xprs -p8 75M.$$TRIM.Trinity.fasta 2>>75M.$$TRIM.mapping.log ; rm index*
+	bowtie2 -p 12 -X 999 -k 30 -x index -1 ../$(READ1) -2 ../$(READ2) 2>>75M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 75.$$TRIM.xprs -p8 75M.$$TRIM.Trinity.fasta 2>>75M.$$TRIM.mapping.log ; rm index*
 
 
 raw.100M.$(READ1) raw.100M.$(READ2): 
@@ -163,7 +168,7 @@ raw.100M.$(READ1) raw.100M.$(READ2):
 	mv subsamp_2.fastq raw.100M.$(READ2)	
 trim100:
 	@echo About to start trimming
-	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar $(TRIMMOMATIC) PE \
+	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
 	../raw.100M.$(READ1) \
 	../raw.100M.$(READ2) \
@@ -190,4 +195,4 @@ pep100:
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 100M.$$TRIM.Trinity.fasta.pep
 map100:
 	bowtie2-build -q 100M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 100M.$$TRIM.mapping.log
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>100M.$$TRIM.mapping.log | express -o 100.$$TRIM.xprs -p8 100M.$$TRIM.Trinity.fasta 2>>100M.$$TRIM.mapping.log ; rm index*
+	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>100M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 100.$$TRIM.xprs -p8 100M.$$TRIM.Trinity.fasta 2>>100M.$$TRIM.mapping.log ; rm index*
