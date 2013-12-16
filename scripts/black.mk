@@ -19,7 +19,7 @@ MAKEDIR := $(dir $(firstword $(MAKEFILE_LIST)))
 
 
 subsamp10: 
-	python {MAKEDIR}/subsampler.py 10000000 $(READ1) $(READ2)
+	python ${MAKEDIR}/subsampler.py 10000000 $(READ1) $(READ2)
 	mv subsamp_1.fastq raw.10M.$(READ1)
 	mv subsamp_2.fastq raw.10M.$(READ2)	
 trim10:
