@@ -8,6 +8,7 @@ eXpress:
 	tar -zxf express-1.5.1-linux_x86_64.tgz
 	cp express-1.5.1-linux_x86_64/express .
 	rm express-1.5.1-linux_x86_64.tgz
+	mkdir plugins/
 	mv express-1.5.1-linux_x86_64/ plugins/
 trimmomatic:
 	wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.32.zip
