@@ -1,6 +1,6 @@
 #!/usr/bin/make -rRsf
 
-all:eXpress trimmomatic flash
+all:eXpress trimmomatic Pfam GRCm38
 clean_all:clean clean_check
 	
 eXpress:	
