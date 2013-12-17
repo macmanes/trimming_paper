@@ -2,6 +2,8 @@
 
 #USAGE:
 
+SHELL=/bin/bash -o pipefail
+
 MEM=5
 TRIM=2
 CPU=5
@@ -16,7 +18,7 @@ PFAM := Pfam-A.hmm
 TRINITY ?= $(shell which 'Trinity.pl')
 MAKEDIR := $(dir $(firstword $(MAKEFILE_LIST)))
 TRINDIR := $(dir $(firstword $(TRINITY)))
-PATH=$PATH:MAKEDIR
+PATH:=$(MAKEDIR):$(PATH)
 
 subsamp10: 
 	python ${MAKEDIR}/subsampler.py 10000000 $(READ1) $(READ2)
@@ -26,8 +28,8 @@ trim10:
 	@echo About to start trimming
 	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
-	../raw.10M.$(READ1) \
-	../raw.10M.$(READ2) \
+	raw.10M.$(READ1) \
+	raw.10M.$(READ2) \
 	10M.$$TRIM.pp.1.fq \
 	10M.$$TRIM.up.1.fq \
 	10M.$$TRIM.pp.2.fq \
@@ -46,9 +48,9 @@ trin10:
 pslx10:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 10M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep10:
-	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --MPI --quiet --CPU $(CPU) -t 10M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 10M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam10.log; \
-	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 10M.$$TRIM.Trinity.fasta.pep
+	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 10M.$$TRIM.Trinity.fasta.pep
 map10:
 	bowtie2-build -q 10M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 10M.$$TRIM.mapping.log; \
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 10M.$$TRIM.xprs -p8 10M.$$TRIM.Trinity.fasta 2>>10M.$$TRIM.mapping.log; rm index*
@@ -61,8 +63,8 @@ trim20:
 	@echo About to start trimming
 	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
-	../raw.20M.$(READ1) \
-	../raw.20M.$(READ2) \
+	raw.20M.$(READ1) \
+	raw.20M.$(READ2) \
 	20M.$$TRIM.pp.1.fq \
 	20M.$$TRIM.up.1.fq \
 	20M.$$TRIM.pp.2.fq \
@@ -81,9 +83,9 @@ trin20:
 pslx20:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 20M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep20:
-	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --MPI --quiet --CPU $(CPU) -t 20M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 20M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam20.log; \
-	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 20M.$$TRIM.Trinity.fasta.pep
+	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 20M.$$TRIM.Trinity.fasta.pep
 map20:
 	bowtie2-build -q 20M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 20M.$$TRIM.mapping.log; \
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>20M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 20M.$$TRIM.xprs -p8 20M.$$TRIM.Trinity.fasta 2>>20M.$$TRIM.mapping.log; rm index*
@@ -96,8 +98,8 @@ trim50:
 	@echo About to start trimming
 	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
-	../raw.50M.$(READ1) \
-	../raw.50M.$(READ2) \
+	raw.50M.$(READ1) \
+	raw.50M.$(READ2) \
 	50M.$$TRIM.pp.1.fq \
 	50M.$$TRIM.up.1.fq \
 	50M.$$TRIM.pp.2.fq \
@@ -116,9 +118,9 @@ trin50:
 pslx50:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 50M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep50:
-	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --MPI --quiet --CPU $(CPU) -t 50M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 50M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam50.log; \
-	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 50M.$$TRIM.Trinity.fasta.pep
+	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 50M.$$TRIM.Trinity.fasta.pep
 map50:
 	bowtie2-build -q 50M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 50M.$$TRIM.mapping.log; \
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>50M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 50.$$TRIM.xprs -p8 50M.$$TRIM.Trinity.fasta 2>>50M.$$TRIM.mapping.log; rm index*
@@ -133,8 +135,8 @@ trim75:
 	cd $$TRIM.trim75
 	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
-	../raw.75M.$(READ1) \
-	../raw.75M.$(READ2) \
+	raw.75M.$(READ1) \
+	raw.75M.$(READ2) \
 	75M.$$TRIM.pp.1.fq \
 	75M.$$TRIM.up.1.fq \
 	75M.$$TRIM.pp.2.fq \
@@ -153,9 +155,9 @@ trin75:
 pslx75:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 75M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep75:
-	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --MPI --quiet --CPU $(CPU) -t 75M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 75M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >> pfam75.log; \
-	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 75M.$$TRIM.Trinity.fasta.pep
+	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 75M.$$TRIM.Trinity.fasta.pep
 map75:
 	bowtie2-build -q 75M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 75M.$$TRIM.mapping.log; \
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 ../$(READ1) -2 ../$(READ2) 2>>75M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 75.$$TRIM.xprs -p8 75M.$$TRIM.Trinity.fasta 2>>75M.$$TRIM.mapping.log ; rm index*
@@ -169,8 +171,8 @@ trim100:
 	@echo About to start trimming
 	java -XX:ParallelGCThreads=32 -Xmx$(MEM)g -jar ${MAKEDIR}/trimmomatic-0.32.jar PE \
 	-phred33 -threads $(CPU) \
-	../raw.100M.$(READ1) \
-	../raw.100M.$(READ2) \
+	raw.100M.$(READ1) \
+	raw.100M.$(READ2) \
 	100M.$$TRIM.pp.1.fq \
 	100M.$$TRIM.up.1.fq \
 	100M.$$TRIM.pp.2.fq \
@@ -189,9 +191,9 @@ trin100:
 pslx100:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 100M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep100:
-	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --MPI --quiet --CPU $(CPU) -t 100M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 100M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >> pfam100.log; \
-	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 100M.$$TRIM.Trinity.fasta.pep
+	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 100M.$$TRIM.Trinity.fasta.pep
 map100:
 	bowtie2-build -q 100M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 100M.$$TRIM.mapping.log
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>100M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 100.$$TRIM.xprs -p8 100M.$$TRIM.Trinity.fasta 2>>100M.$$TRIM.mapping.log ; rm index*
