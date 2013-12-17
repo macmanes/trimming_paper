@@ -21,9 +21,9 @@ Pfam:
 	cd hmmer-3.1b1-linux-intel-x86_64 && ./configure && $(MAKE) -j6 && $(MAKE) -j6 check
 	cp hmmer-3.1b1-linux-intel-x86_64/src/hmmpress .
 	cp hmmer-3.1b1-linux-intel-x86_64/src/hmmscan .
-    cp hmmer-3.1b1-linux-intel-x86_64/src/hmmsearch .
-    cp hmmer-3.1b1-linux-intel-x86_64/src/hmmstat .	
-    wget http://sourceforge.net/projects/trinotate/files/TRINOTATE_RESOURCES/Pfam-A.hmm.gz
+	cp hmmer-3.1b1-linux-intel-x86_64/src/hmmsearch .
+	cp hmmer-3.1b1-linux-intel-x86_64/src/hmmstat .	
+	wget http://sourceforge.net/projects/trinotate/files/TRINOTATE_RESOURCES/Pfam-A.hmm.gz
 	gzip -d Pfam-A.hmm.gz
 	hmmpress Pfam-A.hmm
 GRCm38:
