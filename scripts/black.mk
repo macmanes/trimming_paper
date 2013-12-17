@@ -50,7 +50,7 @@ pslx10:
 pep10:
 	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 10M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam10.log; \
-	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 10M.$$TRIM.Trinity.fasta.pep
+	rm *dat *tbl *cds; mv 10M.$$TRIM.Trinity.fasta.transdecoder.pep 10M.$$TRIM.Trinity.fasta.pep
 map10:
 	bowtie2-build -q 10M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 10M.$$TRIM.mapping.log; \
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 10M.$$TRIM.xprs -p8 10M.$$TRIM.Trinity.fasta 2>>10M.$$TRIM.mapping.log; rm index*
@@ -85,7 +85,7 @@ pslx20:
 pep20:
 	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 20M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam20.log; \
-	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 20M.$$TRIM.Trinity.fasta.pep
+	rm *dat *tbl *cds; mv 20M.$$TRIM.Trinity.fasta.transdecoder.pep 20M.$$TRIM.Trinity.fasta.pep
 map20:
 	bowtie2-build -q 20M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 20M.$$TRIM.mapping.log; \
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>20M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 20M.$$TRIM.xprs -p8 20M.$$TRIM.Trinity.fasta 2>>20M.$$TRIM.mapping.log; rm index*
@@ -120,7 +120,7 @@ pslx50:
 pep50:
 	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 50M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam50.log; \
-	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 50M.$$TRIM.Trinity.fasta.pep
+	rm *dat *tbl *cds; mv 50M.$$TRIM.Trinity.fasta.transdecoder.pep 50M.$$TRIM.Trinity.fasta.pep
 map50:
 	bowtie2-build -q 50M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 50M.$$TRIM.mapping.log; \
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>50M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 50.$$TRIM.xprs -p8 50M.$$TRIM.Trinity.fasta 2>>50M.$$TRIM.mapping.log; rm index*
@@ -157,7 +157,7 @@ pslx75:
 pep75:
 	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 75M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >> pfam75.log; \
-	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 75M.$$TRIM.Trinity.fasta.pep
+	rm *dat *tbl *cds; mv 75M.$$TRIM.Trinity.fasta.transdecoder.pep 75M.$$TRIM.Trinity.fasta.pep
 map75:
 	bowtie2-build -q 75M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 75M.$$TRIM.mapping.log; \
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 ../$(READ1) -2 ../$(READ2) 2>>75M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 75.$$TRIM.xprs -p8 75M.$$TRIM.Trinity.fasta 2>>75M.$$TRIM.mapping.log ; rm index*
@@ -193,7 +193,7 @@ pslx100:
 pep100:
 	$(TRINDIR)/trinity-plugins/transdecoder/TransDecoder --quiet --CPU $(CPU) -t 100M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >> pfam100.log; \
-	rm longest_orfs* *dat *scores *cds *inx; mv best_candidates.eclipsed_orfs_removed.pep 100M.$$TRIM.Trinity.fasta.pep
+	rm *dat *tbl *cds; mv 100M.$$TRIM.Trinity.fasta.transdecoder.pep 100M.$$TRIM.Trinity.fasta.pep
 map100:
 	bowtie2-build -q 100M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 100M.$$TRIM.mapping.log
 	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>100M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 100.$$TRIM.xprs -p8 100M.$$TRIM.Trinity.fasta 2>>100M.$$TRIM.mapping.log ; rm index*
