@@ -46,7 +46,7 @@ trin10:
 pslx10:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 10M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep10:
-	$(TRINDIR)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 10M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/TransDecoder --MPI --quiet/TransDecoder --MPI --quiet --CPU $(CPU) -t 10M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam10.log; \
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 10M.$$TRIM.Trinity.fasta.pep
 map10:
@@ -81,7 +81,7 @@ trin20:
 pslx20:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 20M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep20:
-	$(TRINDIR)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 20M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/TransDecoder --MPI --quiet/TransDecoder --MPI --quiet --CPU $(CPU) -t 20M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam20.log; \
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 20M.$$TRIM.Trinity.fasta.pep
 map20:
@@ -116,7 +116,7 @@ trin50:
 pslx50:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 50M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep50:
-	$(TRINDIR)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 50M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/TransDecoder --MPI --quiet/TransDecoder --MPI --quiet --CPU $(CPU) -t 50M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >>pfam50.log; \
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 50M.$$TRIM.Trinity.fasta.pep
 map50:
@@ -153,7 +153,7 @@ trin75:
 pslx75:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 75M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep75:
-	$(TRINDIR)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 75M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/TransDecoder --MPI --quiet/TransDecoder --MPI --quiet --CPU $(CPU) -t 75M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >> pfam75.log; \
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 75M.$$TRIM.Trinity.fasta.pep
 map75:
@@ -189,7 +189,7 @@ trin100:
 pslx100:
 	$(TRINDIR)/Analysis/FL_reconstruction_analysis/FL_trans_analysis_pipeline.pl --target ${MAKEDIR}/$(MUS) --query 100M.$$TRIM.Trinity.fasta; rm *maps *selected *summary
 pep100:
-	$(TRINDIR)/trinity-plugins/transdecoder/transcripts_to_best_scoring_ORFs.pl --CPU $(CPU) -t 100M.$$TRIM.Trinity.fasta \
+	$(TRINDIR)/trinity-plugins/TransDecoder --MPI --quiet/TransDecoder --MPI --quiet --CPU $(CPU) -t 100M.$$TRIM.Trinity.fasta \
 	--search_pfam ${MAKEDIR}/$(PFAM) >> pfam100.log; \
 	rm longest_orfs* *gff3 *dat *scores *cds *bed *inx; mv best_candidates.eclipsed_orfs_removed.pep 100M.$$TRIM.Trinity.fasta.pep
 map100:
