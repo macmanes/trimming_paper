@@ -23,9 +23,8 @@ Pfam:
 	cp hmmer-3.1b1-linux-intel-x86_64/src/hmmscan .
 	cp hmmer-3.1b1-linux-intel-x86_64/src/hmmsearch .
 	cp hmmer-3.1b1-linux-intel-x86_64/src/hmmstat .	
-	wget http://sourceforge.net/projects/trinotate/files/TRINOTATE_RESOURCES/Pfam-A.hmm.gz
-	gzip -d Pfam-A.hmm.gz
-	hmmpress Pfam-A.hmm
+	wget http://sourceforge.net/projects/transdecoder/files/Pfam-AB.hmm.bin	
+	hmmpress Pfam-AB.hmm.bin
 GRCm38:
 	wget ftp://ftp.ensembl.org/pub/release-71/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.71.cdna.all.fa.gz
 	gzip -d Mus_musculus.GRCm38.71.cdna.all.fa.gz

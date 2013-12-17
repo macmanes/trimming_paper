@@ -12,7 +12,7 @@ READ1=left.fastq
 READ2=right.fastq
 BCODES=barcodes.fa
 MUS := Mus_musculus.GRCm38.71.cdna.all.fa
-PFAM := Pfam-A.hmm
+PFAM := Pfam-AB.hmm.bin
 
 
 TRINITY ?= $(shell which 'Trinity.pl')
