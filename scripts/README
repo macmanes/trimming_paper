@@ -1,4 +1,4 @@
-For recreating the analyses:
+For recreating the analyses: Note that the subsampling is random, and assemblies are not deterministic, so your number will vary somewhat from what I have reported. 
 
 Download the read data: 
 
@@ -17,7 +17,7 @@ To do the subsampling at 10M reads:
 READ1=left.fastq \
 READ2=right.fastq
 
-use sumsamp20, subsamp50, etc for subsampling the other datasets. 
+use subsamp20, subsamp50, etc for subsampling the other datasets. 
 
 To to the analyses, with trimming at Phred=2, for instance
 
