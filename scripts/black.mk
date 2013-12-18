@@ -13,6 +13,8 @@ READ2=right.fastq
 BCODES=barcodes.fa
 MUS := Mus_musculus.GRCm38.71.cdna.all.fa
 PFAM := Pfam-AB.hmm.bin
+BOWTIECPU=5
+EXPRESSCPU=5
 
 
 TRINITY ?= $(shell which 'Trinity.pl')
@@ -53,7 +55,7 @@ pep10:
 	rm *dat *tbl *cds; mv 10M.$$TRIM.Trinity.fasta.transdecoder.pep 10M.$$TRIM.Trinity.fasta.pep
 map10:
 	bowtie2-build -q 10M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 10M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 10M.$$TRIM.xprs -p8 10M.$$TRIM.Trinity.fasta 2>>10M.$$TRIM.mapping.log; rm index*
+	bowtie2 -p $(BOWTIECPU) -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>10M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 10M.$$TRIM.xprs -p $(EXPRESSCPU) 10M.$$TRIM.Trinity.fasta 2>>10M.$$TRIM.mapping.log; rm index*
 
 raw.20M.$(READ1) raw.20M.$(READ2): 
 	python ~/error_correction/scripts/subsampler.py 20000000 $(READ1) $(READ2)
@@ -88,7 +90,7 @@ pep20:
 	rm *dat *tbl *cds; mv 20M.$$TRIM.Trinity.fasta.transdecoder.pep 20M.$$TRIM.Trinity.fasta.pep
 map20:
 	bowtie2-build -q 20M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 20M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>20M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 20M.$$TRIM.xprs -p8 20M.$$TRIM.Trinity.fasta 2>>20M.$$TRIM.mapping.log; rm index*
+	bowtie2 -p $(BOWTIECPU) -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>20M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 20M.$$TRIM.xprs -p $(EXPRESSCPU) 20M.$$TRIM.Trinity.fasta 2>>20M.$$TRIM.mapping.log; rm index*
 
 raw.50M.$(READ1) raw.50M.$(READ2): 
 	python ~/error_correction/scripts/subsampler.py 50000000 $(READ1) $(READ2)
@@ -123,7 +125,7 @@ pep50:
 	rm *dat *tbl *cds; mv 50M.$$TRIM.Trinity.fasta.transdecoder.pep 50M.$$TRIM.Trinity.fasta.pep
 map50:
 	bowtie2-build -q 50M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 50M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>50M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 50.$$TRIM.xprs -p8 50M.$$TRIM.Trinity.fasta 2>>50M.$$TRIM.mapping.log; rm index*
+	bowtie2 -p $(BOWTIECPU) -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>50M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 50.$$TRIM.xprs -p $(EXPRESSCPU) 50M.$$TRIM.Trinity.fasta 2>>50M.$$TRIM.mapping.log; rm index*
 
 raw.75M.$(READ1) raw.75M.$(READ2): 
 	python ~/error_correction/scripts/subsampler.py 75000000 $(READ1) $(READ2)
@@ -160,7 +162,7 @@ pep75:
 	rm *dat *tbl *cds; mv 75M.$$TRIM.Trinity.fasta.transdecoder.pep 75M.$$TRIM.Trinity.fasta.pep
 map75:
 	bowtie2-build -q 75M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 75M.$$TRIM.mapping.log; \
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 ../$(READ1) -2 ../$(READ2) 2>>75M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 75.$$TRIM.xprs -p8 75M.$$TRIM.Trinity.fasta 2>>75M.$$TRIM.mapping.log ; rm index*
+	bowtie2 -p $(BOWTIECPU) -X 999 -k 30 -x index -1 ../$(READ1) -2 ../$(READ2) 2>>75M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 75.$$TRIM.xprs -p $(EXPRESSCPU) 75M.$$TRIM.Trinity.fasta 2>>75M.$$TRIM.mapping.log ; rm index*
 
 
 raw.100M.$(READ1) raw.100M.$(READ2): 
@@ -196,4 +198,4 @@ pep100:
 	rm *dat *tbl *cds; mv 100M.$$TRIM.Trinity.fasta.transdecoder.pep 100M.$$TRIM.Trinity.fasta.pep
 map100:
 	bowtie2-build -q 100M.$$TRIM.Trinity.fasta index; echo -e '\n' Mapping at PHRED=$$TRIM '\n' >> 100M.$$TRIM.mapping.log
-	bowtie2 -p 12 -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>100M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 100.$$TRIM.xprs -p8 100M.$$TRIM.Trinity.fasta 2>>100M.$$TRIM.mapping.log ; rm index*
+	bowtie2 -p $(BOWTIECPU) -X 999 -k 30 -x index -1 $(READ1) -2 $(READ2) 2>>100M.$$TRIM.mapping.log | ${MAKEDIR}/express -o 100.$$TRIM.xprs -p $(EXPRESSCPU) 100M.$$TRIM.Trinity.fasta 2>>100M.$$TRIM.mapping.log ; rm index*
