@@ -1,6 +1,6 @@
 #!/usr/bin/make -rRsf
 
-#USAGE:
+#USAGE: read the manual
 
 SHELL=/bin/bash -o pipefail
 
